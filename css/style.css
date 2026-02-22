@@ -1,0 +1,237 @@
+/* 
+----------------- 
+Design 
+----------------- 
+*/
+
+/* styling for pages */
+:root {
+  --orange:        #f77f00;
+  --orange2:       #faad14;
+  --dark:          #0d0d0d;
+  --white:         #ffffff;
+  --text-muted:    rgba(255, 255, 255, 0.75);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --font-display:  'Bebas Neue', sans-serif;
+  --font-body:     'Barlow', sans-serif;
+  --nav-h:         76px;
+  --transition:    0.22s ease;
+}
+
+/* 
+----------------- 
+Global 
+----------------- 
+*/
+
+/* global styling */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html   { scroll-behavior: smooth; }
+body   { background: #D9D9D9; color: #141414; font-family: var(--font-body); overflow-x: hidden; } /* body background and text color */
+a      { text-decoration: none; color: inherit; } /* link styling */
+ul     { list-style: none; }
+button { cursor: pointer; font-family: inherit; }
+
+/* 
+----------------- 
+Navbar
+----------------- 
+*/
+
+/* navbar placement and styling */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-h);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2rem;
+  background: #4A433F;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* 
+----------------- 
+Logo 
+----------------- 
+*/
+
+/* logo placement */
+.site-nav__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* logo size */
+.site-nav__logo .logo {
+  height: clamp(55px, 4.5vw, 60px);  /* scales with viewport */
+  width: auto;
+  display: block;
+  transition: height var(--transition);
+}
+
+/* 
+----------------- 
+Nav Links 
+----------------- 
+*/
+
+/* links placement */
+.site-nav__links {
+  display: flex;
+  align-items: center;  /* aligns links center */
+  gap: 1.75rem;         /* spacing between links */
+  margin-left: 2.5rem;  /* gap between logo and first link */
+  flex: 1;
+}
+
+/* links styling */
+.site-nav__links a {
+  font-size: 0.9rem;  /* link font size */
+  font-weight: 600; /* links font weight bold */
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color var(--transition);  /* smooth transition */
+}
+
+/* navbar links orange on hover */
+.site-nav__links a:hover { color: var(--orange); }
+
+/* 
+----------------- 
+Nav Right 
+----------------- 
+*/
+
+/* aligns navbar items right */
+.site-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* 
+----------------- 
+Bookings Button 
+----------------- 
+*/
+
+/* booking button */
+.btn-bookings {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 7px;
+  background: transparent;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+/* bookings hover animation */
+.btn-bookings:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+  background: rgba(247, 127, 0, 0.08);
+}
+
+/* 
+----------------- 
+Hamburger Button 
+----------------- 
+*/
+
+/* hamburger placement and styling */
+.btn-hamburger {
+  display: none;  
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 38px;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--white);
+  background: transparent;
+  border: 2px solid var(--white);
+  border-radius: 7px;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+/* hamburger icon hover animation */
+.btn-hamburger:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+/* 
+----------------- 
+Mobile Menu 
+----------------- 
+*/
+
+/* mobile menu styling */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #CCC5BE;
+  flex-direction: column;
+  padding-top: var(--nav-h);
+}
+
+/* mobile menu displays vertically */
+.mobile-menu.is-open { display: flex; }
+
+/* mobile menu full width of viewport and aligned center */
+.mobile-menu__list {
+  padding: 1.5rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* mobile menu links divider placement and styling */
+.mobile-menu__list li {
+  padding-block: 1.1rem;
+  padding-left: 1rem;
+  width: 80%;
+  border-bottom: 1px solid #141414;
+}
+
+/* mobile menu links styling */
+.mobile-menu__list a {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #141414;
+  transition: color var(--transition);
+}
+
+/* mobile navbar menu links hover color */
+.mobile-menu__list a:hover { color: var(--orange); }
+
+/* 
+----------------- 
+Responsive 
+----------------- 
+*/
+
+/* resizes on mobile */
+@media (max-width: 768px) {
+  .site-nav        { padding-inline: 1.25rem; }
+  .site-nav__links { display: none; }
+  .btn-hamburger   { display: inline-flex; }
+}

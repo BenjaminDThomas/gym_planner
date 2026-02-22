@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Planner</title>
+    <!-- CSS Styles File-->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS Grid File-->
+    <link rel="stylesheet" href="css/grid.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Navbar -->
+        <nav class="site-nav" aria-label="Main navigation">
+            <!-- Logo -->
+            <a href="#home" class="site-nav__logo" aria-label="GymPlanner home">
+                <img class="logo" src="../images/logo.png" alt="GymPlanner logo">
+            </a>
+            <!-- Nav Links -->
+            <ul class="site-nav__links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="session_planner.html">Session Planner</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+            </ul>
+            <!-- Nav Right -->
+            <div class="site-nav__right">
+                <a href="bookings.html" class="btn-bookings">Bookings</a>
+                <button id="hamburger" class="btn-hamburger" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation menu">&#9776;</button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <nav id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+            <ul class="mobile-menu__list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="session_planner.html">Session Planner</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>
