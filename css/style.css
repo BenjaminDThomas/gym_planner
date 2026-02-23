@@ -4,6 +4,10 @@ Design
 ----------------- 
 */
 
+body {
+    overflow-x: hidden;
+}
+
 /* styling for pages */
 :root {
   --orange:        #f77f00;
@@ -56,7 +60,7 @@ Navbar
 
 /* 
 ----------------- 
-Logo 
+Nav Logo 
 ----------------- 
 */
 
@@ -119,7 +123,7 @@ Nav Right
 
 /* 
 ----------------- 
-Bookings Button 
+Nav Bookings Button 
 ----------------- 
 */
 
@@ -149,7 +153,7 @@ Bookings Button
 
 /* 
 ----------------- 
-Hamburger Button 
+Nav Hamburger Button 
 ----------------- 
 */
 
@@ -177,7 +181,7 @@ Hamburger Button
 
 /* 
 ----------------- 
-Mobile Menu 
+Mobile Menu Nav
 ----------------- 
 */
 
@@ -225,7 +229,7 @@ Mobile Menu
 
 /* 
 ----------------- 
-Responsive 
+Responsive
 ----------------- 
 */
 

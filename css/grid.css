@@ -1,0 +1,261 @@
+/* 
+----------------- 
+Footer 
+----------------- 
+*/
+
+/* footer design */
+.site-footer {
+  position: relative;
+  background: #2C2A29; /* footer background color */
+  color: var(--white);
+  padding: 66px 16px 26px;
+  overflow: visible;
+}
+
+/* 
+----------------- 
+Footer Design 
+----------------- 
+*/
+
+.footer-cut {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: clamp(220px, 36vw, 620px); /* scales with viewport */
+  height: auto;
+  transform: translateY(-45%) scaleY(0.9); /* overlaps section above */
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* content layer above svg */
+.footer-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 
+----------------- 
+Footer Top Row 
+----------------- 
+*/
+
+/* top row columns */
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* centers socials between logo and right edge */
+  align-items: center;
+  gap: 16px;
+}
+
+/* 
+----------------- 
+Footer Logo 
+----------------- 
+*/
+
+/* footer logo */
+.site-footer__logo {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 14px;
+  margin-left: 120px;
+}
+
+/* footer logo size */
+.site-footer__logo img {
+  height: clamp(54px, 3.6vw, 84px); /* scales with viewport */
+  width: auto;
+  display: block;
+}
+
+/* 
+----------------- 
+Footer Socials 
+----------------- 
+*/
+
+/* social icons row */
+.footer-social {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* social icon button */
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+}
+
+/* social icon size */
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--white);
+  opacity: .95;
+}
+
+/* social icon hover */
+.social-link:hover {
+  transform: translateY(-3px);    /* lifts 3px on hover */
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.40);
+}
+
+/* 
+----------------- 
+Footer Rules 
+----------------- 
+*/
+
+/* horizontal divider */
+.footer-rule {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15); /* divider color */
+  margin: 16px auto;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* shorter section divider */
+.footer-rule--short {
+  max-width: 720px;
+}
+
+/* 
+----------------- 
+Footer Contact 
+----------------- 
+*/
+
+/* contact row */
+.footer-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* contact links */
+.footer-contact a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+/* contact link hover underline */
+.footer-contact a:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+/* separator character between items */
+.sep {
+  color: rgba(255, 255, 255, 0.35);
+  user-select: none;
+}
+
+/* 
+----------------- 
+Footer Bottom Links 
+----------------- 
+*/
+
+/* bottom links row */
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-family: var(--font-body);
+}
+
+/* bottom link */
+.footer-bottom a {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-block;
+  transition: transform var(--transition), color var(--transition);
+}
+
+/* bottom link hover */
+.footer-bottom a:hover {
+  transform: translateY(-3px);    /* lifts 3px on hover */
+  color: var(--white);
+}
+
+/* 
+----------------- 
+Footer Responsive 
+----------------- 
+*/
+
+@media (max-width: 640px) {
+
+  /* footer padding reduced on mobile */
+  .site-footer {
+    padding-top: 48px;
+  }
+
+  /* svg smaller on mobile */
+  .footer-cut {
+    width: clamp(190px, 62vw, 340px);
+    transform: translateY(-42%) scaleY(0.9);
+  }
+
+  /* mobile: logo left, socials right */
+  .footer-top {
+    grid-template-columns: 1fr auto; /* two columns only */
+    align-items: center;
+    column-gap: 14px;
+    row-gap: 0;
+    margin-top: 14px;
+  }
+
+  /* mobile logo indent */
+  .site-footer__logo {
+    justify-self: start;
+    padding-left: 6px;
+    margin-left: 40px;
+  }
+
+  /* mobile logo size */
+  .site-footer__logo img {
+    height: 62px;
+  }
+
+  /* socials pushed to right on mobile */
+  .footer-social {
+    justify-self: end;
+    padding-right: 6px;
+  }
+
+  /* smaller divider size */
+  .footer-rule {
+    margin: 14px auto;
+  }
+}
+
