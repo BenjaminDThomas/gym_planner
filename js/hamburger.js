@@ -1,17 +1,19 @@
 /*
 -----------
-Navbar Mobile Hamburger Toggle
+Navbar Mobile Hamburger Toggle + Smooth Scroll
 -----------
 */
 
-(function () {'use strict';
+(function () { 'use strict';
+
   /* gets elements */
   const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
+
   /* toggle open / closed */
   hamburger.addEventListener('click', function () {
     const isOpen = mobileMenu.classList.toggle('is-open');
-    /* swap icon when closed to hamburger and X when open */
+    /* swap icon — hamburger when closed, X when open */
     hamburger.innerHTML = isOpen ? '&#10005;' : '&#9776;';
     /* update aria-expanded */
     hamburger.setAttribute('aria-expanded', String(isOpen));
@@ -19,18 +21,19 @@ Navbar Mobile Hamburger Toggle
     /* prevent scrolling while menu is open */
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
+
   /* close when menu link is clicked */
   var menuLinks = mobileMenu.querySelectorAll('a');
   menuLinks.forEach(function (link) {
     link.addEventListener('click', closeMenu);
   });
-  /* disapear when viewport is resized back to desktop */
+
+  /* disappear when viewport is resized back to desktop */
   window.addEventListener('resize', function () {
-    if (window.innerWidth > 768) {
-      closeMenu();
-    }
+    if (window.innerWidth > 768) closeMenu();
   });
-  /* closes when navbar link is clicked */
+
+  /* closes menu and resets state */
   function closeMenu() {
     mobileMenu.classList.remove('is-open');
     hamburger.innerHTML = '&#9776;';
@@ -38,4 +41,46 @@ Navbar Mobile Hamburger Toggle
     hamburger.setAttribute('aria-label', 'Open navigation menu');
     document.body.style.overflow = '';
   }
+
+  /*
+  -----------
+  Smooth Scroll
+  -----------
+  */
+
+  /* reads nav height from css variable */
+  function getNavH() {
+    return parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
+    ) || 76;
+  }
+  /* scrolls smoothly to target */
+  function smoothScrollTo(target) {
+    /* pre-reveal lazy-load elements before scroll */
+    target.querySelectorAll(
+      '.about__row, .about__headline-row, .about__closing'
+    ).forEach(function (el) { el.classList.add('is-visible'); });
+    requestAnimationFrame(function () {
+      var top = target.getBoundingClientRect().top + window.scrollY - getNavH() - 8;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  }
+
+  /* closes when navbar link is clicked */
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var href = link.getAttribute('href');
+    if (!href || href === '#') return;
+    var target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    /* close mobile menu first if open, then scroll */
+    if (mobileMenu.classList.contains('is-open')) {
+      closeMenu();
+      setTimeout(function () { smoothScrollTo(target); }, 60);
+    } else {
+      smoothScrollTo(target);
+    }
+  });
 })();

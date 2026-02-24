@@ -209,53 +209,274 @@ Footer Bottom Links
 
 /* 
 ----------------- 
+About 
+----------------- 
+*/
+
+/* about section */
+.about {
+    background: #D9D9D9;
+    padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 5rem);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* 
+----------------- 
+About Rows 
+----------------- 
+*/
+
+/* image and text side by side */
+.about__row {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    margin-bottom: clamp(2rem, 4vw, 4rem);
+}
+
+/* row 1: mini bars left, text right */
+.about__row--1 {
+    align-items: flex-start;
+}
+
+/* row 2: text left, top bar right */
+.about__row--2 {
+    justify-content: space-between;
+}
+
+/* row 3: lifter left, text right */
+.about__row--3 {
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+}
+
+/* 
+----------------- 
+About Decorative Images 
+----------------- 
+*/
+
+/* mini bars — top left */
+.about__deco--mini-bars {
+    width: clamp(55px, 8vw, 95px);
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* top bar — middle right */
+.about__deco--top-bar {
+    width: clamp(55px, 8vw, 95px);
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* 
+----------------- 
+About Text 
+----------------- 
+*/
+
+/* intro paragraph block */
+.about__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    color: #333;
+    line-height: 1.7;
+    font-family: var(--font-body);
+}
+
+/* middle paragraph */
+.about__text-mid {
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    color: #333;
+    line-height: 1.7;
+    font-family: var(--font-body);
+    flex: 1;
+}
+
+/* right column paragraph */
+.about__text-right {
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    color: #333;
+    line-height: 1.7;
+    font-family: var(--font-body);
+    flex: 1;
+}
+
+/* 
+----------------- 
+About Headline 
+----------------- 
+*/
+
+/* headline row */
+.about__headline-row {
+    margin-block: clamp(1rem, 3vw, 2.5rem);
+    text-align: left;
+}
+
+/* about us header */
+.about__headline {
+    font-family: var(--font-body);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    color: #141414;
+    letter-spacing: -0.01em;
+    line-height: 1;
+}
+
+/* 
+----------------- 
+About Lifter 
+----------------- 
+*/
+
+/* wrapper constrains svg width */
+.about__lifter-wrap {
+    flex-shrink: 0;
+    width: clamp(120px, 18vw, 220px);
+    margin-top: 1.5rem;
+}
+/* svg size */
+.about__lifter-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+/* barbell part lifting animation */
+.lift-group {
+    animation: barbell-lift 2.4s ease-in-out infinite;
+}
+/* barbell svg animation keyframes */
+@keyframes barbell-lift {
+    0%   { transform: translateY(0px); }
+    40%  { transform: translateY(-16px); }
+    60%  { transform: translateY(-16px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 
+----------------- 
+About Closing 
+----------------- 
+*/
+
+/* closing italic statement */
+.about__closing {
+    text-align: center;
+    margin-top: clamp(2rem, 4vw, 4rem);
+    padding-top: clamp(1.5rem, 3vw, 3rem);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* closing paragraph */
+.about__closing p {
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    color: #555;
+    line-height: 1.9;
+    font-family: var(--font-body);
+    font-style: italic;
+}
+
+/* 
+----------------- 
+About Lazy Load 
+----------------- 
+*/
+
+/* loads on scroll, changing the opacity */
+.about__row,
+.about__headline-row,
+.about__closing {
+    opacity: 0;
+    transition: opacity 0.65s ease;
+}
+.about__row.is-visible,
+.about__headline-row.is-visible,
+.about__closing.is-visible {
+    opacity: 1;
+}
+
+/* 
+----------------- 
 Footer Responsive 
 ----------------- 
 */
 
 @media (max-width: 640px) {
+    /* footer padding reduced on mobile */
+    .site-footer {
+        padding-top: 48px;
+    }
 
-  /* footer padding reduced on mobile */
-  .site-footer {
-    padding-top: 48px;
-  }
+    /* svg smaller on mobile */
+    .footer-cut {
+        width: clamp(190px, 62vw, 340px);
+        transform: translateY(-42%) scaleY(0.9);
+    }
 
-  /* svg smaller on mobile */
-  .footer-cut {
-    width: clamp(190px, 62vw, 340px);
-    transform: translateY(-42%) scaleY(0.9);
-  }
+    /* mobile: logo left, socials right */
+    .footer-top {
+        grid-template-columns: 1fr auto; /* two columns only */
+        align-items: center;
+        column-gap: 14px;
+        row-gap: 0;
+        margin-top: 14px;
+    }
 
-  /* mobile: logo left, socials right */
-  .footer-top {
-    grid-template-columns: 1fr auto; /* two columns only */
-    align-items: center;
-    column-gap: 14px;
-    row-gap: 0;
-    margin-top: 14px;
-  }
+    /* mobile logo indent */
+    .site-footer__logo {
+        justify-self: start;
+        padding-left: 6px;
+        margin-left: 40px;
+    }
 
-  /* mobile logo indent */
-  .site-footer__logo {
-    justify-self: start;
-    padding-left: 6px;
-    margin-left: 40px;
-  }
+    /* mobile logo size */
+    .site-footer__logo img {
+        height: 62px;
+    }
 
-  /* mobile logo size */
-  .site-footer__logo img {
-    height: 62px;
-  }
+    /* socials pushed to right on mobile */
+    .footer-social {
+        justify-self: end;
+        padding-right: 6px;
+    }
 
-  /* socials pushed to right on mobile */
-  .footer-social {
-    justify-self: end;
-    padding-right: 6px;
-  }
+    /* smaller divider size */
+    .footer-rule {
+        margin: 14px auto;
+    }
+  
+    /* keep rows side by side on mobile */
+    .about__row {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1rem;
+        flex-wrap: nowrap;
+    }
 
-  /* smaller divider size */
-  .footer-rule {
-    margin: 14px auto;
-  }
+    /* row 2 mobile keeps text left, image right */
+    .about__row--2 {
+        flex-direction: row;
+    }
+
+    /* smaller images on mobile */
+    .about__deco--mini-bars,
+    .about__deco--top-bar {
+        width: clamp(45px, 14vw, 70px);
+    }
+
+    /* headline left-aligned on mobile */
+    .about__headline-row {
+        text-align: left;
+    }
+
+    /* smaller lifter on mobile */
+    .about__lifter-wrap {
+        width: clamp(80px, 22vw, 120px);
+    }
 }
-

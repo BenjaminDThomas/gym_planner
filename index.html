@@ -52,9 +52,66 @@
         </div>
     </section>
     <!-- ------- About Us ------- -->
-    <section class="about_us" style="margin-top: 150px"> <!-- Temporary styling -->
-        <h2>About Us</h2>
-        <p>content</p>
+    <section class="about" id="about" aria-label="About Us">
+        <!-- Row 1: mini bars top left + text right -->
+        <div class="about__row about__row--1">
+            <img class="about__deco about__deco--mini-bars" src="images/mini_bars.png" alt="" aria-hidden="true" loading="lazy">
+            <div class="about__text-block">
+                <p>We created this gym journal to make fitness tracking simple, flexible, and effective.</p>
+                <p>Training isn't always perfect. Plans change, schedules shift, and goals evolve.</p>
+            </div>
+        </div>
+        <!-- Row 2: text left + top bar right -->
+        <div class="about__row about__row--2">
+            <p class="about__text-mid">
+                That's why our platform is built to let you plan workouts, edit them as needed,
+                and delete what no longer serves you…
+            </p>
+            <img class="about__deco about__deco--top-bar" src="images/top_bar.png" alt="" aria-hidden="true" loading="lazy">
+        </div>
+        <!-- ALL IN ONE PLACE Headline -->
+        <div class="about__headline-row">
+            <h2 class="about__headline">ALL IN ONE PLACE!</h2>
+        </div>
+        <!-- Row 3: lifting animation left + text right -->
+        <div class="about__row about__row--3">
+        <div class="about__lifter-wrap">
+            <svg class="about__lifter-svg" viewBox="0 -25 130 179" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Animated figure lifting a barbell" role="img">
+                <!-- Static: legs -->
+                <path d="M39 113H61V144C61 149.523 56.5228 154 51 154H49C43.4772 154 39 149.523 39 144V113Z" fill="#333333"/>
+                <path d="M69 113H91V144C91 149.523 86.5228 154 81 154H79C73.4772 154 69 149.523 69 144V113Z" fill="#333333"/>
+                <!-- Static: torso -->
+                <rect x="39" y="42" width="52" height="71" fill="#333333"/>
+                <!-- Static: head -->
+                <circle cx="65.5" cy="29.5" r="18.5" fill="#333333"/>
+                <!-- Static: shoulder connectors -->
+                <path d="M34.4607 45.9628L37.144 35.6921L44.87 43.8811L34.4607 45.9628Z" fill="#333333"/>
+                <path d="M95.189 46.9628L92.5057 36.6921L84.7797 44.8811L95.189 46.9628Z" fill="#333333"/>
+                <!-- Static: full arm path -->
+                <path d="M39 15C39 10.0294 34.9706 6 30 6C25.0294 6 21 10.0294 21 15V50C21 59.9411 29.0589 68 39 68V15Z" fill="#333333"/>
+                <path d="M91 15C91 10.0294 95.0294 6 100 6C104.971 6 109 10.0294 109 15V50C109 59.9411 100.941 68 91 68V15Z" fill="#333333"/>
+                <!-- Animated: bar + weights -->
+                <g class="lift-group">
+                    <!-- Barbell Bar -->
+                    <rect y="10" width="130" height="8" rx="4" fill="#333333"/>
+                    <!-- Left Weight Plates -->
+                    <rect x="11" y="0" width="6" height="27" rx="3" fill="#333333"/>
+                    <rect x="3" y="0" width="6" height="27" rx="3" fill="#333333"/>
+                    <!-- Right Weight Plates -->
+                    <rect x="121" y="0" width="6" height="27" rx="3" fill="#333333"/>
+                    <rect x="113" y="0" width="6" height="27" rx="3" fill="#333333"/>
+                    <!-- Static hands gripping bar -->
+                    <rect x="19" y="5" width="22" height="30" rx="8" fill="#333333"/>
+                    <rect x="89" y="5" width="22" height="30" rx="8" fill="#333333"/>
+                </g>
+            </svg>
+        </div>
+        <p class="about__text-right">Whether you're starting your fitness journey or refining your routine, our goal is to give you a tool that supports real progress without unnecessary complexity. We focus on clarity, ease of use, and features that actually help you stay consistent.</p>
+        </div>
+        <!-- Final Paragraph -->
+        <div class="about__closing">
+            <p>Fitness is built on small, daily actions.<br>Plan your workouts. Put in the work. Grow over time.<br>Your goals. Your journey. Your journal.</p>
+        </div>
     </section>
     <!-- ------- Footer ------- -->
     <footer class="site-footer" id="footer">
@@ -111,5 +168,6 @@
     </footer>
     <!-- Scripts -->
     <script src="js/hamburger.js" defer></script>
+    <script src="js/about.js" defer></script>
 </body>
 </html>
