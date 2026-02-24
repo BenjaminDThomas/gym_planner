@@ -1,482 +1,724 @@
 /* 
 ----------------- 
-Footer 
+Bookings Page 
 ----------------- 
 */
 
-/* footer design */
-.site-footer {
+/* main page area, clears fixed navbar */
+.bookings-page {
+  min-height: 100vh;
+  background: #D9D9D9;
+  padding-top: calc(var(--nav-h) + 2.5rem);
+  padding-bottom: 5rem;
+}
+
+/* centered narrow container */
+.bookings-container {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* 
+----------------- 
+Page Header 
+----------------- 
+*/
+
+/* header block */
+.bookings-header { margin-bottom: 2rem; }
+
+/* page title */
+.bookings-header h1 {
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+/* subtitle */
+.bookings-header p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+/* drag hint with icon */
+.bookings-drag-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  line-height: 1;
+}
+
+/* drag hint icon */
+.bookings-drag-hint svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  stroke: #482F2F;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+}
+
+/* 
+----------------- 
+Section Wrapper 
+----------------- 
+*/
+
+/* spacing between each booking step */
+.bookings-section { margin-bottom: 2rem; }
+
+/* section label */
+.bookings-section-title {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+/* 
+----------------- 
+Trainer Carousel 
+----------------- 
+*/
+
+/* outer layer, overflow visible so badge is never clipped */
+.trainer-carousel-outer {
   position: relative;
-  background: #2C2A29; /* footer background color */
-  color: var(--white);
-  padding: 66px 16px 26px;
   overflow: visible;
 }
 
+/* inner layer clips cards, padding creates space for badge */
+.trainer-carousel-wrap {
+  overflow: visible;
+  padding-inline: 12px;
+}
+
+/* grabbing cursor while dragging */
+.trainer-carousel-wrap:active { cursor: grabbing; }
+
+/* sliding track */
+.trainer-carousel-track {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 /* 
 ----------------- 
-Footer Design 
+Trainer Card 
 ----------------- 
 */
 
-.footer-cut {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: clamp(220px, 36vw, 620px); /* scales with viewport */
-  height: auto;
-  transform: translateY(-45%) scaleY(0.9); /* overlaps section above */
-  z-index: 0;
-  pointer-events: none;
-  display: block;
-}
-
-/* content layer above svg */
-.footer-inner {
+/* card base, wide enough so next card peeks */
+.trainer-card {
+  flex: 0 0 min(78vw, 310px);
+  background: #f5f0ee;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  cursor: pointer;
   position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
+  overflow: visible;
+}
+
+/* card hover */
+.trainer-card:hover {
+  transform: translateY(-4px);
+  border-color: #482F2F;
+  box-shadow: 0 6px 20px rgba(72, 47, 47, 0.15);
+}
+
+/* card selected */
+.trainer-card.selected {
+  transform: translateY(-4px);
+  border-color: #482F2F;
+  box-shadow: 0 6px 20px rgba(72, 47, 47, 0.2);
 }
 
 /* 
 ----------------- 
-Footer Top Row 
+Selected Badge 
 ----------------- 
 */
 
-/* top row columns */
-.footer-top {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr; /* centers socials between logo and right edge */
-  align-items: center;
-  gap: 16px;
+/* badge sits above the card */
+.trainer-selected-label {
+  position: absolute;
+  top: -24px;
+  left: 0;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #482F2F;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
+
+/* show badge when card is selected */
+.trainer-card.selected .trainer-selected-label { opacity: 1; }
 
 /* 
 ----------------- 
-Footer Logo 
+Card Header 
 ----------------- 
 */
 
-/* footer logo */
-.site-footer__logo {
-  justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  margin-bottom: 14px;
-  margin-left: 120px;
+/* top section with name, photo, rating */
+.trainer-card-header {
+  background: #ede6e3;
+  border-radius: 12px 12px 0 0;
+  padding: 1rem 1rem 0.75rem;
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
 }
 
-/* footer logo size */
-.site-footer__logo img {
-  height: clamp(54px, 3.6vw, 84px); /* scales with viewport */
-  width: auto;
+/* left side, name and rating stacked */
+.trainer-card-header-left {
+  flex: 1;
+  min-width: 0;
+}
+
+/* trainer full name */
+.trainer-name {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 0.1rem;
+}
+
+/* trainer job title */
+.trainer-title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 0.55rem;
+}
+
+/* circular profile photo */
+.trainer-photo {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ccc;
+  flex-shrink: 0;
   display: block;
 }
 
+/* star rating row */
+.trainer-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+/* star icons */
+.trainer-stars { display: flex; gap: 1px; }
+
+/* filled star */
+.trainer-stars span { font-size: 0.78rem; color: #f7a033; }
+
+/* empty star */
+.trainer-stars span.empty { color: #ccc; }
+
+/* numeric rating */
+.trainer-rating-num {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* review count */
+.trainer-rating-count {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: #888;
+}
+
 /* 
 ----------------- 
-Footer Socials 
+Card Body 
 ----------------- 
 */
 
-/* social icons row */
-.footer-social {
-  justify-self: center;
-  display: flex;
-  align-items: center;
-  gap: 14px;
+/* bottom section with about list and bio */
+.trainer-card-body {
+  background: #f5f0ee;
+  border-radius: 0 0 12px 12px;
+  padding: 0.85rem 1rem 1rem;
 }
 
-/* social icon button */
-.social-link {
-  width: 40px;
-  height: 40px;
+/* about section label */
+.trainer-about-title {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #482F2F;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.45rem;
+}
+
+/* about bullet list */
+.trainer-about-list {
+  list-style: disc;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.75rem;
+}
+
+/* each bullet item */
+.trainer-about-list li {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #444;
+  line-height: 1.45;
+}
+
+/* bio paragraph */
+.trainer-bio {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.55;
+  border-top: 1px solid rgba(72, 47, 47, 0.1);
+  padding-top: 0.65rem;
+}
+
+/* 
+----------------- 
+Carousel Dots 
+----------------- 
+*/
+
+/* dot row below carousel */
+.trainer-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* individual dot */
+.trainer-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #bbb;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+/* active dot */
+.trainer-dot.active {
+  background: #482F2F;
+  transform: scale(1.2);
+}
+
+/* 
+----------------- 
+Date Picker 
+----------------- 
+*/
+
+/* row with arrows and date chips */
+.date-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* prev/next arrow buttons */
+.date-scroll-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* arrow hover */
+.date-scroll-btn:hover {
+  border-color: #482F2F;
+  transform: translateY(-2px);
+}
+
+/* arrow disabled */
+.date-scroll-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* arrow icon */
+.date-scroll-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: #333;
+}
+
+/* five date chips in a row */
+.date-grid {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+/* individual date chip */
+.date-chip {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.55rem 0.3rem;
   border-radius: 10px;
+  border: 2px solid transparent;
+  background: #f5f0ee;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: var(--font-body);
+}
+
+/* date chip hover */
+.date-chip:hover {
+  transform: translateY(-3px);
+  border-color: #482F2F;
+  box-shadow: 0 4px 12px rgba(72, 47, 47, 0.12);
+}
+
+/* date chip selected */
+.date-chip.selected {
+  transform: translateY(-3px);
+  border-color: #482F2F;
+  box-shadow: 0 4px 12px rgba(72, 47, 47, 0.18);
+  background: #f0e8e5;
+}
+
+/* day abbreviation e.g. Mon */
+.date-chip-day {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #482F2F;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* day number e.g. 24 */
+.date-chip-num {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+/* month abbreviation e.g. Feb */
+.date-chip-month {
+  font-size: 0.65rem;
+  color: #888;
+}
+
+/* 4 week limit note */
+.date-limit-note {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* 
+----------------- 
+Time Slots 
+----------------- 
+*/
+
+/* 3-column grid of time buttons */
+.time-grid {
   display: grid;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.06);
-  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
 }
 
-/* social icon size */
-.social-link svg {
-  width: 18px;
-  height: 18px;
-  fill: var(--white);
-  opacity: .95;
+/* time button */
+.time-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background: #f5f0ee;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #333;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* social icon hover */
-.social-link:hover {
-  transform: translateY(-3px);    /* lifts 3px on hover */
-  background: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.40);
+/* time chip hover */
+.time-chip:hover {
+  transform: translateY(-3px);
+  border-color: #482F2F;
+  box-shadow: 0 4px 12px rgba(72, 47, 47, 0.12);
+}
+
+/* time chip selected */
+.time-chip.selected {
+  transform: translateY(-3px);
+  border-color: #482F2F;
+  box-shadow: 0 4px 12px rgba(72, 47, 47, 0.18);
+  background: #f0e8e5;
+}
+
+.time-chip-arrow {
+  font-size: 0.7rem;
+  color: #482F2F;
 }
 
 /* 
 ----------------- 
-Footer Rules 
+Email Input 
 ----------------- 
 */
 
-/* horizontal divider */
-.footer-rule {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.15); /* divider color */
-  margin: 16px auto;
+/* wrapper for input and error */
+.email-input-wrap { position: relative; }
+
+/* email text input */
+.email-input {
   width: 100%;
-  max-width: 900px;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  background: #f9f6f5;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
-/* shorter section divider */
-.footer-rule--short {
-  max-width: 720px;
+/* focus ring */
+.email-input:focus { border-color: #482F2F; }
+
+/* invalid state */
+.email-input.error { border-color: #e05050; }
+
+/* error message, hidden by default */
+.email-error-msg {
+  display: none;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #e05050;
+  margin-top: 0.4rem;
 }
+
+/* show error message */
+.email-error-msg.visible { display: block; }
 
 /* 
 ----------------- 
-Footer Contact 
+Confirm Button 
 ----------------- 
 */
 
-/* contact row */
-.footer-contact {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  color: var(--text-muted);
+/* full width confirm button */
+.confirm-btn {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, #7a4a4a 0%, #482F2F 100%);
+  color: #fff;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(72, 47, 47, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* confirm button hover */
+.confirm-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(72, 47, 47, 0.4);
+}
+
+/* confirm button press */
+.confirm-btn:active { transform: translateY(-1px); }
+
+/* 
+----------------- 
+Success Modal 
+----------------- 
+*/
+
+/* fullscreen overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* show modal */
+.modal-overlay.visible { display: flex; }
+
+/* modal card */
+.modal-box {
+  background: #fff;
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  max-width: 360px;
+  width: 100%;
   text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: modal-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* contact links */
-.footer-contact a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
+/* load animation */
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.85) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* contact link hover underline */
-.footer-contact a:hover {
-  border-bottom-color: rgba(255, 255, 255, 0.35);
-}
-
-/* separator character between items */
-.sep {
-  color: rgba(255, 255, 255, 0.35);
-  user-select: none;
-}
-
-/* 
------------------ 
-Footer Bottom Links 
------------------ 
-*/
-
-/* bottom links row */
-.footer-bottom {
+/* green tick circle */
+.modal-tick {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #4CAF50;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  color: var(--text-muted);
-  font-size: 13px;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+/* tick icon */
+.modal-tick svg {
+  width: 28px;
+  height: 28px;
+  stroke: #4CAF50;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+/* success heading */
+.modal-title {
   font-family: var(--font-body);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
 }
 
-/* bottom link */
-.footer-bottom a {
-  color: var(--text-muted);
-  text-decoration: none;
-  display: inline-block;
-  transition: transform var(--transition), color var(--transition);
+/* booking details text */
+.modal-body {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
 }
 
-/* bottom link hover */
-.footer-bottom a:hover {
-  transform: translateY(-3px);    /* lifts 3px on hover */
-  color: var(--white);
+.modal-body strong {
+  color: #482F2F;
+  font-weight: 700;
 }
 
-/* 
------------------ 
-About 
------------------ 
-*/
-
-/* about section */
-.about {
-    background: #D9D9D9;
-    padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 5rem);
-    max-width: 1100px;
-    margin: 0 auto;
+/* completed button */
+.modal-close-btn {
+  padding: 0.65rem 2rem;
+  border-radius: 50px;
+  border: 2px solid #482F2F;
+  background: transparent;
+  color: #482F2F;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-/* 
------------------ 
-About Rows 
------------------ 
-*/
-
-/* image and text side by side */
-.about__row {
-    display: flex;
-    align-items: center;
-    gap: clamp(1.5rem, 4vw, 4rem);
-    margin-bottom: clamp(2rem, 4vw, 4rem);
-}
-
-/* row 1: mini bars left, text right */
-.about__row--1 {
-    align-items: flex-start;
-}
-
-/* row 2: text left, top bar right */
-.about__row--2 {
-    justify-content: space-between;
-}
-
-/* row 3: lifter left, text right */
-.about__row--3 {
-    align-items: center;
-    gap: clamp(2rem, 5vw, 5rem);
+/* completed button hover */
+.modal-close-btn:hover {
+  background: #482F2F;
+  color: #fff;
+  transform: translateY(-2px);
 }
 
 /* 
 ----------------- 
-About Decorative Images 
+Responsive 
 ----------------- 
 */
 
-/* mini bars — top left */
-.about__deco--mini-bars {
-    width: clamp(55px, 8vw, 95px);
-    height: auto;
-    flex-shrink: 0;
+/* desktop: show both cards side by side with no carousel behaviour */
+@media (min-width: 600px) {
+  /* hide drag hint on desktop */
+  .bookings-drag-hint { display: none; }
+
+  /* hide carousel dots on desktop */
+  .trainer-dots { display: none; }
+
+  /* remove carousel padding */
+  .trainer-carousel-wrap { padding-inline: 0; }
+
+  /* disable slide transform on desktop */
+  .trainer-carousel-track {
+    transform: none !important;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* fixed card width side by side on desktop */
+  .trainer-card {
+    flex: 0 0 280px;
+    cursor: pointer;
+  }
 }
 
-/* top bar — middle right */
-.about__deco--top-bar {
-    width: clamp(55px, 8vw, 95px);
-    height: auto;
-    flex-shrink: 0;
-}
+@media (max-width: 480px) {
+  /* 2 columns on small screens */
+  .time-grid { grid-template-columns: repeat(2, 1fr); }
 
-/* 
------------------ 
-About Text 
------------------ 
-*/
-
-/* intro paragraph block */
-.about__text-block {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-    color: #333;
-    line-height: 1.7;
-    font-family: var(--font-body);
-}
-
-/* middle paragraph */
-.about__text-mid {
-    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-    color: #333;
-    line-height: 1.7;
-    font-family: var(--font-body);
-    flex: 1;
-}
-
-/* right column paragraph */
-.about__text-right {
-    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-    color: #333;
-    line-height: 1.7;
-    font-family: var(--font-body);
-    flex: 1;
-}
-
-/* 
------------------ 
-About Headline 
------------------ 
-*/
-
-/* headline row */
-.about__headline-row {
-    margin-block: clamp(1rem, 3vw, 2.5rem);
-    text-align: left;
-}
-
-/* about us header */
-.about__headline {
-    font-family: var(--font-body);
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 900;
-    color: #141414;
-    letter-spacing: -0.01em;
-    line-height: 1;
-}
-
-/* 
------------------ 
-About Lifter 
------------------ 
-*/
-
-/* wrapper constrains svg width */
-.about__lifter-wrap {
-    flex-shrink: 0;
-    width: clamp(120px, 18vw, 220px);
-    margin-top: 1.5rem;
-}
-/* svg size */
-.about__lifter-svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    overflow: visible;
-}
-/* barbell part lifting animation */
-.lift-group {
-    animation: barbell-lift 2.4s ease-in-out infinite;
-}
-/* barbell svg animation keyframes */
-@keyframes barbell-lift {
-    0%   { transform: translateY(0px); }
-    40%  { transform: translateY(-16px); }
-    60%  { transform: translateY(-16px); }
-    100% { transform: translateY(0px); }
-}
-
-/* 
------------------ 
-About Closing 
------------------ 
-*/
-
-/* closing italic statement */
-.about__closing {
-    text-align: center;
-    margin-top: clamp(2rem, 4vw, 4rem);
-    padding-top: clamp(1.5rem, 3vw, 3rem);
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-/* closing paragraph */
-.about__closing p {
-    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-    color: #555;
-    line-height: 1.9;
-    font-family: var(--font-body);
-    font-style: italic;
-}
-
-/* 
------------------ 
-About Lazy Load 
------------------ 
-*/
-
-/* loads on scroll, changing the opacity */
-.about__row,
-.about__headline-row,
-.about__closing {
-    opacity: 0;
-    transition: opacity 0.65s ease;
-}
-.about__row.is-visible,
-.about__headline-row.is-visible,
-.about__closing.is-visible {
-    opacity: 1;
-}
-
-/* 
------------------ 
-Footer Responsive 
------------------ 
-*/
-
-@media (max-width: 640px) {
-    /* footer padding reduced on mobile */
-    .site-footer {
-        padding-top: 48px;
-    }
-
-    /* svg smaller on mobile */
-    .footer-cut {
-        width: clamp(190px, 62vw, 340px);
-        transform: translateY(-42%) scaleY(0.9);
-    }
-
-    /* mobile: logo left, socials right */
-    .footer-top {
-        grid-template-columns: 1fr auto; /* two columns only */
-        align-items: center;
-        column-gap: 14px;
-        row-gap: 0;
-        margin-top: 14px;
-    }
-
-    /* mobile logo indent */
-    .site-footer__logo {
-        justify-self: start;
-        padding-left: 6px;
-        margin-left: 40px;
-    }
-
-    /* mobile logo size */
-    .site-footer__logo img {
-        height: 62px;
-    }
-
-    /* socials pushed to right on mobile */
-    .footer-social {
-        justify-self: end;
-        padding-right: 6px;
-    }
-
-    /* smaller divider size */
-    .footer-rule {
-        margin: 14px auto;
-    }
-  
-    /* keep rows side by side on mobile */
-    .about__row {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 1rem;
-        flex-wrap: nowrap;
-    }
-
-    /* row 2 mobile keeps text left, image right */
-    .about__row--2 {
-        flex-direction: row;
-    }
-
-    /* smaller images on mobile */
-    .about__deco--mini-bars,
-    .about__deco--top-bar {
-        width: clamp(45px, 14vw, 70px);
-    }
-
-    /* headline left-aligned on mobile */
-    .about__headline-row {
-        text-align: left;
-    }
-
-    /* smaller lifter on mobile */
-    .about__lifter-wrap {
-        width: clamp(80px, 22vw, 120px);
-    }
+  /* smaller date numbers */
+  .date-chip-num { font-size: 0.85rem; }
 }

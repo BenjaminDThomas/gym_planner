@@ -20,8 +20,8 @@
             </a>
             <!-- Nav Links -->
             <ul class="site-nav__links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
                 <li><a href="session_planner.html">Session Planner</a></li>
                 <li><a href="#footer">Contact Us</a></li>
             </ul>
@@ -41,9 +41,146 @@
             </ul>
         </nav>
     </header>
-    
-
-    
+    <!-- ------- Bookings Page ------- -->
+    <main class="bookings-page">
+        <div class="bookings-container">
+            <!-- Page Header -->
+            <div class="bookings-header">
+                <h1>Book Personal Trainer</h1>
+                <p>Get expert guidance to reach your fitness goals.<br>Select a trainer and time for your session.</p>
+                <span class="bookings-drag-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 7h8M8 12h8M8 17h4"/>
+                        <path d="M3 7l2-2 2 2M3 17l2 2 2-2"/>
+                    </svg>
+                    Drag Personal Trainers
+                </span>
+            </div>
+            <!-- Trainer Carousel -->
+            <section class="bookings-section" aria-label="Select trainer">
+                <div class="trainer-carousel-outer">
+                    <div class="trainer-carousel-wrap" id="trainerCarousel">
+                        <div class="trainer-carousel-track" id="trainerTrack">
+                            <!-- Trainer 1: Jonathon Jones -->
+                            <div class="trainer-card" data-trainer="0" role="button" tabindex="0" aria-label="Select Jonathon Jones">
+                                <!-- Trainer Selected -->
+                                <div class="trainer-selected-label">SELECTED</div>
+                                <div class="trainer-card-header">
+                                    <div class="trainer-card-header-left">
+                                        <div class="trainer-name">Jonathon Jones</div>
+                                        <div class="trainer-title">Certified Personal Trainer</div>
+                                        <div class="trainer-rating">
+                                            <div class="trainer-stars" aria-hidden="true">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span class="empty">★</span>
+                                            </div>
+                                            <span class="trainer-rating-num">4.9</span>
+                                            <span class="trainer-rating-count">(120 reviews)</span>
+                                        </div>
+                                    </div>
+                                    <img class="trainer-photo" src="images/profile_picture_male.png" alt="Jonathon Jones">
+                                </div>
+                                <!-- Trainer Body Section -->
+                                <div class="trainer-card-body">
+                                    <div class="trainer-about-title">About Jonathon</div>
+                                    <ul class="trainer-about-list">
+                                        <li>Specialties: Strength Training, Weight Loss, Nutrition</li>
+                                        <li>7+ Years Experience as a certified personal trainer</li>
+                                        <li>Tailors programs to all fitness levels and goals</li>
+                                    </ul>
+                                    <p class="trainer-bio">Hi, I'm Jonathon, an experienced trainer here to help you reach your fitness goals with personalised workouts.</p>
+                                </div>
+                            </div>
+                            <!-- Trainer 2: Sarah Chambers -->
+                            <div class="trainer-card" data-trainer="1" role="button" tabindex="0" aria-label="Select Sarah Chambers">
+                                <div class="trainer-selected-label">SELECTED</div>
+                                <div class="trainer-card-header">
+                                    <div class="trainer-card-header-left">
+                                        <div class="trainer-name">Sarah Chambers</div>
+                                        <div class="trainer-title">Certified Personal Trainer</div>
+                                        <div class="trainer-rating">
+                                            <div class="trainer-stars" aria-hidden="true">
+                                                <span>★</span><span>★</span><span>★</span><span class="empty">★</span><span class="empty">★</span>
+                                            </div>
+                                            <span class="trainer-rating-num">3.8</span>
+                                            <span class="trainer-rating-count">(86 reviews)</span>
+                                        </div>
+                                    </div>
+                                    <img class="trainer-photo" src="images/profile_picture_female.png" alt="Sarah Chambers">
+                                </div>
+                                <div class="trainer-card-body">
+                                    <div class="trainer-about-title">About Sarah</div>
+                                    <ul class="trainer-about-list">
+                                        <li>Specialties: Strength Training, Weight Loss, Nutrition</li>
+                                        <li>3+ Years Experience as a certified personal trainer</li>
+                                        <li>Tailors programs to all fitness levels and goals</li>
+                                    </ul>
+                                    <p class="trainer-bio">Hi, I'm Sarah, an experienced trainer here to help you reach your fitness goals with personalised workouts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel Dots -->
+                    <div class="trainer-dots" id="trainerDots" aria-label="Trainer carousel navigation">
+                        <button class="trainer-dot active" data-index="0" aria-label="Trainer 1"></button>
+                        <button class="trainer-dot" data-index="1" aria-label="Trainer 2"></button>
+                    </div>
+                </div>
+            </section>
+            <!-- Select Date -->
+            <section class="bookings-section" aria-label="Select date">
+                <div class="bookings-section-title">Select Date</div>
+                <div class="date-nav">
+                    <button class="date-scroll-btn" id="datePrev" aria-label="Previous week" disabled>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="date-grid" id="dateGrid"></div>
+                    <button class="date-scroll-btn" id="dateNext" aria-label="Next week">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="date-limit-note">Bookings available up to 4 weeks in advance</div>
+            </section>
+            <!-- Select Time -->
+            <section class="bookings-section" aria-label="Select time">
+                <div class="bookings-section-title">Select Time</div>
+                <div class="time-grid" id="timeGrid">
+                    <button class="time-chip" data-time="9:00 am">9:00 am <span class="time-chip-arrow">›</span></button>
+                    <button class="time-chip" data-time="10:00 am">10:00 am <span class="time-chip-arrow">›</span></button>
+                    <button class="time-chip" data-time="11:00 am">11:00 am <span class="time-chip-arrow">›</span></button>
+                    <button class="time-chip" data-time="12:00 pm">12:00 pm <span class="time-chip-arrow">›</span></button>
+                    <button class="time-chip" data-time="1:00 pm">1:00 pm <span class="time-chip-arrow">›</span></button>
+                    <button class="time-chip" data-time="2:00 pm">2:00 pm <span class="time-chip-arrow">›</span></button>
+                </div>
+            </section>
+            <!-- Enter Email -->
+            <section class="bookings-section" aria-label="Enter email">
+                <div class="bookings-section-title">Enter Email</div>
+                <div class="email-input-wrap">
+                    <input type="email" class="email-input" id="emailInput" placeholder="Enter email address here..." autocomplete="email"/>
+                    <div class="email-error-msg" id="emailError">Please enter a valid email address.</div>
+                </div>
+            </section>
+            <!-- Confirm Button -->
+            <button class="confirm-btn" id="confirmBtn">
+                <span>+</span> Confirm Booking
+            </button>
+        </div>
+    </main>
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <div class="modal-tick" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="modal-title" id="modalTitle">Success!</div>
+            <div class="modal-body" id="modalBody"></div>
+            <button class="modal-close-btn" id="modalClose">Done</button>
+        </div>
+    </div>
     <!-- ------- Footer ------- -->
     <footer class="site-footer" id="footer">
     <!-- SVG -->
@@ -99,5 +236,6 @@
     </footer>
     <!-- Scripts -->
     <script src="js/hamburger.js" defer></script>
+    <script src="js/bookings.js" defer></script>
 </body>
 </html>
