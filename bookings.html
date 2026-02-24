@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session</title>
+    <!-- CSS Styles File-->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS Grid File-->
+    <link rel="stylesheet" href="css/grid.css">
+</head>
+<body>
+    <!-- ------- Header ------- -->
+    <header>
+        <!-- ------- Navbar ------- -->
+        <nav class="site-nav" aria-label="Main navigation">
+            <!-- Logo -->
+            <a href="#home" class="site-nav__logo" aria-label="GymPlanner home">
+                <img class="logo" src="../images/logo.png" alt="GymPlanner logo">
+            </a>
+            <!-- Nav Links -->
+            <ul class="site-nav__links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="session_planner.html">Session Planner</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+            </ul>
+            <!-- Nav Right -->
+            <div class="site-nav__right">
+                <a href="bookings.html" class="btn-bookings">Bookings</a>
+                <button id="hamburger" class="btn-hamburger" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation menu">&#9776;</button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <nav id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+            <ul class="mobile-menu__list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="session_planner.html">Session Planner</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    
+    <!-- ------- Footer ------- -->
+    <footer class="site-footer" id="footer">
+    <!-- SVG -->
+    <img src="images/footer_cross-section_box.svg" alt="" aria-hidden="true" class="footer-cut"/>
+    <!-- Logo -->
+    <div class="footer-inner">
+        <div class="footer-top">
+        <a href="#home" class="site-footer__logo" aria-label="Back to top">
+            <img src="images/logo.png" alt="GymPlanner logo">
+        </a>
+        <!-- Facebook Socials -->
+        <div class="footer-social" aria-label="Social media">
+            <a class="social-link" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+            </a>
+            <!-- Instagram Socials -->
+            <a class="social-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            </a>
+            <!-- LinkedIn Socials -->
+            <a class="social-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+            </svg>
+            </a>
+        </div>
+        </div>
+        <!-- Divider -->
+        <div class="footer-rule"></div>
+        <!-- Contact Details -->
+        <div class="footer-contact">
+        <span>Phone: <a href="tel:+441234567">+44 1234 567</a></span>
+        <span class="sep" aria-hidden="true">|</span>
+        <span>Email: <a href="mailto:gymplanner@gmail.com">gymplanner@gmail.com</a></span>
+        </div>
+        <!-- Divider -->
+        <div class="footer-rule footer-rule--short"></div>
+        <!-- Bottom Terms and Conditions -->
+        <div class="footer-bottom">
+            <span>Copyright &copy; 2025</span>
+            <span class="sep" aria-hidden="true">|</span>
+            <a href="#">Privacy Policy</a>
+            <span class="sep" aria-hidden="true">|</span>
+            <a href="#">Terms &amp; Conditions</a>
+        </div>
+    </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="js/hamburger.js" defer></script>
+</body>
+</html>
