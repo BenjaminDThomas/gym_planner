@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Planner</title>
+    <!-- CSS Styles File-->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS Grid File-->
+    <link rel="stylesheet" href="css/grid.css">
+    <!-- CSS Planner File-->
+    <link rel="stylesheet" href="css/planner.css">
+</head>
+<body>
+    <!-- ------- Header ------- -->
+    <header>
+        <!-- ------- Navbar ------- -->
+        <nav class="site-nav" aria-label="Main navigation">
+            <!-- Logo -->
+            <a href="index.html" class="site-nav__logo" aria-label="GymPlanner home">
+                <img class="logo" src="../images/logo.png" alt="GymPlanner logo">
+            </a>
+            <!-- Nav Links -->
+            <ul class="site-nav__links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="session_planner.html">Session Planner</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+            </ul>
+            <!-- Nav Right -->
+            <div class="site-nav__right">
+                <a href="bookings.html" class="btn-bookings">Bookings</a>
+                <button id="hamburger" class="btn-hamburger" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation menu">&#9776;</button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <nav id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+            <ul class="mobile-menu__list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="session_planner.html">Session Planner</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Planner -->
+    <div class="planner-shell">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="plannerSidebar">
+            <div class="sidebar-icon">
+                <img src="../images/dumbbell_icon.png" alt="Gym Planner" id="dumbbellIcon"
+                     onerror="this.outerHTML='<svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'rgba(255,255,255,0.8)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M6 4v16M18 4v16M6 8h12M6 16h12M2 8h4M18 8h4M2 16h4M18 16h4\'/></svg>'">
+            </div>
+            <div class="sidebar-profile" id="profileBtn" title="Change profile picture">
+                <img src="../images/profile_picture_male.png" alt="Profile" id="profileImg"
+                     onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'62\' height=\'62\' viewBox=\'0 0 62 62\'><circle cx=\'31\' cy=\'31\' r=\'31\' fill=\'%23ede6e3\'/><circle cx=\'31\' cy=\'24\' r=\'10\' fill=\'%23988483\'/><ellipse cx=\'31\' cy=\'50\' rx=\'18\' ry=\'12\' fill=\'%23988483\'/></svg>'">
+                <div class="sidebar-profile-edit">
+                    <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="sidebar-btn active" data-page="dashboard">Dashboard</button>
+                <button class="sidebar-btn" data-page="my-workouts">My Workouts</button>
+                <button class="sidebar-btn" data-page="my-sessions">My Sessions</button>
+            </nav>
+        </aside>
+        <!-- Mobile Sidebar Toggle Tab -->
+        <button class="sidebar-toggle-tab" id="sidebarToggle" aria-label="Toggle sidebar">
+            <svg class="sidebar-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
+            </svg>
+        </button>
+        <!-- ------- Main Content ------- -->
+        <main class="main-content">
+            <!-- Dashboard -->
+            <section class="page active" id="page-dashboard">
+                <div class="page-header">
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+                <div class="dashboard-welcome">
+                    <h2>Welcome back!</h2>
+                    <div class="user-name">Ben</div>
+                </div>
+                <div class="this-week-card">
+                    <h3>This Week</h3>
+                    <div class="completion" id="dashCompletion">0 <span>/ 0 Completed</span></div>
+                    <div class="session-checklist" id="dashChecklist">
+                        <div class="checklist-item" style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">
+                            No sessions scheduled — create one in My Sessions
+                        </div>
+                    </div>
+                </div>
+                <div class="section-label">Quick Actions</div>
+                <div class="quick-actions">
+                    <button class="quick-action-btn" id="dashCreateWorkout">
+                        <span class="plus">+</span> Create Workout
+                    </button>
+                    <button class="quick-action-btn" id="dashCreateSession">
+                        <span class="plus">+</span> Create Session
+                    </button>
+                </div>
+                <div class="info-boxes">
+                    <div class="info-box">
+                        <h4>Access Anytime, Anywhere</h4>
+                        <p>Your exercise sessions are stored and accessible from any device with internet access.</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>User-Defined Sessions</h4>
+                        <p>Create completely custom workout routines with your preferred exercises, durations, and rest periods.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- My Workouts -->
+            <section class="page" id="page-my-workouts">
+                <div class="page-header">
+                    <h1 class="page-title">My Workouts</h1>
+                    <button class="btn-primary" id="newWorkoutBtn">+ New Workout</button>
+                </div>
+                <div id="workoutsListContainer">
+                    <div class="empty-state" id="workoutsEmpty">
+                        <p>No workouts here yet.<br>Click <strong>+ New Workout</strong> to get started.</p>
+                    </div>
+                    <div class="workout-list" id="workoutList"></div>
+                </div>
+            </section>
+            <!-- Create Workout -->
+            <section class="page" id="page-create-workout">
+                <div class="page-header">
+                    <h1 class="page-title">Create Workout</h1>
+                </div>
+                <div class="workout-form-area">
+                    <div class="session-name-row">
+                        <span class="form-label">Session Name</span>
+                        <input type="text" class="form-input" id="cwSessionName" placeholder="Enter title here...">
+                    </div>
+                    <div class="file-upload-area" id="cwUploadArea">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 16 12 12 8 16"/>
+                            <line x1="12" y1="12" x2="12" y2="21"/>
+                            <path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/>
+                        </svg>
+                        <p>Browse Files</p>
+                        <small>Drag and drop files here</small>
+                        <input type="file" id="cwFileInput" accept="image/*" style="display:none">
+                    </div>
+                    <img id="cwPreviewImg" src="" alt="" class="cw-preview-img">
+                    <div class="exercise-entries" id="exerciseEntries"></div>
+                    <div class="form-bottom-actions">
+                        <button class="btn-secondary" id="addExerciseBtn">Add Exercise</button>
+                        <button class="btn-primary" id="saveWorkoutBtn">Save Workout</button>
+                    </div>
+                </div>
+            </section>
+            <!-- My Sessions -->
+            <section class="page" id="page-my-sessions">
+                <div class="page-header">
+                    <h1 class="page-title">My Sessions</h1>
+                    <button class="btn-primary" id="createSessionBtn">+ Create Session</button>
+                </div>
+                <div id="sessionsContent">
+                    <div class="empty-state" id="sessionsEmpty">
+                        <p>No sessions yet.<br>Click <strong>+ Create Session</strong> to schedule your week.</p>
+                    </div>
+                    <div id="sessionsView" class="sessions-view--hidden">
+                        <div class="week-nav">
+                            <button class="week-nav-btn" id="sessionsPrev">
+                                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                            </button>
+                            <span class="week-label" id="sessionsWeekLabel">This Week</span>
+                            <button class="week-nav-btn" id="sessionsNext">
+                                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                            </button>
+                        </div>
+                        <div class="sessions-day-list" id="sessionsDayList"></div>
+                        <div class="sessions-bottom-actions">
+                            <button class="session-action-icon" id="deleteSessionBtn" title="Delete session">
+                                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                            </button>
+                            <button class="session-action-icon" id="editSessionBtn" title="Edit session">
+                                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Create Session -->
+            <section class="page" id="page-create-session">
+                <div class="page-header">
+                    <h1 class="page-title">Create Session</h1>
+                </div>
+                <div class="create-session-week-select">
+                    <div class="cs-week-label">Select a Week:</div>
+                    <div class="cs-week-row">
+                        <button class="week-nav-btn" id="csMonthPrev">
+                            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                        </button>
+                        <span class="cs-week-name" id="csMonthLabel">February 2026</span>
+                        <button class="week-nav-btn" id="csMonthNext">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
+                    </div>
+                    <label class="cs-recurring-label">
+                        <input type="checkbox" id="csRecurringCheck">
+                        <span class="cs-recurring-text">Repeat weekly</span>
+                    </label>
+                    <div id="csWeekDates" class="cs-week-dates"></div>
+                </div>
+                <div class="workout-pool-hint">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 16 3 12 7 8"/><polyline points="17 8 21 12 17 16"/></svg>
+                    Drag a workout onto a day below, or click it to auto-assign — only workouts added via <strong>+ Add</strong> appear here
+                </div>
+                <div class="workout-pool" id="csWorkoutPool">
+                    <div class="pool-empty-msg">No workouts created yet — go to My Workouts first.</div>
+                </div>
+                <div class="cs-day-list" id="csDayList"></div>
+                <button class="btn-primary btn-full" id="saveSessionBtn">Save Session</button>
+            </section>
+
+        </main>
+    </div>
+    <!-- Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="modal-box">
+            <div class="modal-title">Change Profile Picture</div>
+            <div class="profile-options">
+                <div class="profile-option" data-pic="male">
+                    <img src="../images/profile_picture_male.png" alt="Male" onerror="this.style.display='none'">
+                    <span>Male Avatar</span>
+                </div>
+                <div class="profile-option" data-pic="female">
+                    <img src="../images/profile_picture_female.png" alt="Female" onerror="this.style.display='none'">
+                    <span>Female Avatar</span>
+                </div>
+                <div class="profile-option" data-pic="upload" id="uploadProfileOption">
+                    <div class="upload-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>
+                    </div>
+                    <span>Upload Custom Image</span>
+                    <input type="file" id="profileFileInput" accept="image/*" style="display:none;">
+                </div>
+            </div>
+            <button class="modal-cancel" id="profileModalCancel">Cancel</button>
+        </div>
+    </div>
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+    <!-- ------- Footer ------- -->
+    <footer class="site-footer" id="footer">
+        <!-- SVG -->
+        <img src="../images/footer_cross-section_box.svg" alt="" aria-hidden="true" class="footer-cut"/>
+        <!-- Logo -->
+        <div class="footer-inner">
+            <div class="footer-top">
+                <a href="index.html" class="site-footer__logo" aria-label="Back to top">
+                    <img src="../images/logo.png" alt="GymPlanner logo">
+                </a>
+                <!-- Social links -->
+                <div class="footer-social" aria-label="Social media">
+                    <a class="social-link" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a class="social-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a class="social-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-rule"></div>
+            <div class="footer-contact">
+                <span>Phone: <a href="tel:+441234567">+44 1234 567</a></span>
+                <span class="sep" aria-hidden="true">|</span>
+                <span>Email: <a href="/cdn-cgi/l/email-protection#2a4d53475a464b44444f586a4d474b434604494547"><span class="__cf_email__" data-cfemail="8becf2e6fbe7eae5e5eef9cbece6eae2e7a5e8e4e6">[email&#160;protected]</span></a></span>
+            </div>
+            <div class="footer-rule footer-rule--short"></div>
+            <div class="footer-bottom">
+                <span>Copyright &copy; 2025</span>
+                <span class="sep" aria-hidden="true">|</span>
+                <a href="#">Privacy Policy</a>
+                <span class="sep" aria-hidden="true">|</span>
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="js/planner.js" defer></script>
+</body>
+</html>

@@ -48,7 +48,7 @@ Navbar Mobile Hamburger Toggle + Smooth Scroll
   -----------
   */
 
-  /* reads nav height from css variable */
+  /* reads nav height from css */
   function getNavH() {
     return parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
@@ -65,7 +65,6 @@ Navbar Mobile Hamburger Toggle + Smooth Scroll
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
   }
-
   /* closes when navbar link is clicked */
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[href^="#"]');

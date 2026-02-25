@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-
+  
   document.addEventListener('DOMContentLoaded', function () {
     var selectedTrainer = -1;
     var selectedDate    = null;
@@ -12,6 +12,7 @@
     Trainer Carousel
     ----------------- 
     */
+
     var carousel = document.getElementById('trainerCarousel');
     var track    = document.getElementById('trainerTrack');
     var dots     = document.querySelectorAll('.trainer-dot');
@@ -97,6 +98,7 @@
     Date Picker 
     ----------------- 
     */
+
     var dateGrid = document.getElementById('dateGrid');
     var datePrev = document.getElementById('datePrev');
     var dateNext = document.getElementById('dateNext');

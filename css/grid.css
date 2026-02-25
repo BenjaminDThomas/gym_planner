@@ -1,724 +1,315 @@
-/* 
------------------ 
-Bookings Page 
------------------ 
+/*
+-----------
+Bookings Page
+-----------
 */
-
-/* main page area, clears fixed navbar */
-.bookings-page {
-  min-height: 100vh;
-  background: #D9D9D9;
-  padding-top: calc(var(--nav-h) + 2.5rem);
-  padding-bottom: 5rem;
-}
-
-/* centered narrow container */
-.bookings-container {
-  max-width: 620px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
-}
-
-/* 
------------------ 
-Page Header 
------------------ 
-*/
-
-/* header block */
+.bookings-page { min-height: 100vh; background: #D9D9D9; padding-top: calc(var(--nav-h) + 2.5rem); padding-bottom: 5rem; }
+.bookings-container { max-width: 620px; margin: 0 auto; padding: 0 1.25rem; }
 .bookings-header { margin-bottom: 2rem; }
-
-/* page title */
-.bookings-header h1 {
-  font-family: var(--font-body);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 0.5rem;
-}
-
-/* subtitle */
-.bookings-header p {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 0.75rem;
-}
-
-/* drag hint with icon */
-.bookings-drag-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
-  line-height: 1;
-}
-
-/* drag hint icon */
-.bookings-drag-hint svg {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  stroke: #482F2F;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.9;
-}
-
-/* 
------------------ 
-Section Wrapper 
------------------ 
-*/
-
-/* spacing between each booking step */
+.bookings-header h1 { font-family: var(--font-body); font-size: clamp(1.5rem,3vw,2rem); font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem; }
+.bookings-header p { font-family: var(--font-body); font-size: 0.95rem; color: #555; line-height: 1.6; margin-bottom: 0.75rem; }
+.bookings-drag-hint { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem; line-height: 1; }
+.bookings-drag-hint svg { width: 18px; height: 18px; flex: 0 0 18px; stroke: #482F2F; stroke-linecap: round; stroke-linejoin: round; opacity: 0.9; }
 .bookings-section { margin-bottom: 2rem; }
+.bookings-section-title { font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1rem; }
 
-/* section label */
-.bookings-section-title {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-/* 
------------------ 
-Trainer Carousel 
------------------ 
+/*
+-----------
+Trainer Carousel
+-----------
 */
-
-/* outer layer, overflow visible so badge is never clipped */
-.trainer-carousel-outer {
-  position: relative;
-  overflow: visible;
-}
-
-/* inner layer clips cards, padding creates space for badge */
-.trainer-carousel-wrap {
-  overflow: visible;
-  padding-inline: 12px;
-}
-
-/* grabbing cursor while dragging */
+.trainer-carousel-outer { position: relative; overflow: visible; }
+.trainer-carousel-wrap { overflow: visible; padding-inline: 12px; }
 .trainer-carousel-wrap:active { cursor: grabbing; }
-
-/* sliding track */
-.trainer-carousel-track {
-  display: flex;
-  gap: 1rem;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* 
------------------ 
-Trainer Card 
------------------ 
-*/
-
-/* card base, wide enough so next card peeks */
-.trainer-card {
-  flex: 0 0 min(78vw, 310px);
-  background: #f5f0ee;
-  border-radius: 14px;
-  border: 2px solid transparent;
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-  cursor: pointer;
-  position: relative;
-  overflow: visible;
-}
-
-/* card hover */
-.trainer-card:hover {
-  transform: translateY(-4px);
-  border-color: #482F2F;
-  box-shadow: 0 6px 20px rgba(72, 47, 47, 0.15);
-}
-
-/* card selected */
-.trainer-card.selected {
-  transform: translateY(-4px);
-  border-color: #482F2F;
-  box-shadow: 0 6px 20px rgba(72, 47, 47, 0.2);
-}
-
-/* 
------------------ 
-Selected Badge 
------------------ 
-*/
-
-/* badge sits above the card */
-.trainer-selected-label {
-  position: absolute;
-  top: -24px;
-  left: 0;
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: #482F2F;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  white-space: nowrap;
-}
-
-/* show badge when card is selected */
+.trainer-carousel-track { display: flex; gap: 1rem; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+.trainer-card { flex: 0 0 min(78vw,310px); background: #f5f0ee; border-radius: 14px; border: 2px solid transparent; transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease; cursor: pointer; position: relative; overflow: visible; }
+.trainer-card:hover { transform: translateY(-4px); border-color: #482F2F; box-shadow: 0 6px 20px rgba(72,47,47,0.15); }
+.trainer-card.selected { transform: translateY(-4px); border-color: #482F2F; box-shadow: 0 6px 20px rgba(72,47,47,0.2); }
+.trainer-selected-label { position: absolute; top: -24px; left: 0; font-family: var(--font-body); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; color: #482F2F; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; white-space: nowrap; }
 .trainer-card.selected .trainer-selected-label { opacity: 1; }
-
-/* 
------------------ 
-Card Header 
------------------ 
-*/
-
-/* top section with name, photo, rating */
-.trainer-card-header {
-  background: #ede6e3;
-  border-radius: 12px 12px 0 0;
-  padding: 1rem 1rem 0.75rem;
-  display: flex;
-  gap: 0.85rem;
-  align-items: flex-start;
-}
-
-/* left side, name and rating stacked */
-.trainer-card-header-left {
-  flex: 1;
-  min-width: 0;
-}
-
-/* trainer full name */
-.trainer-name {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 0.1rem;
-}
-
-/* trainer job title */
-.trainer-title {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: #666;
-  margin-bottom: 0.55rem;
-}
-
-/* circular profile photo */
-.trainer-photo {
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  object-fit: cover;
-  background: #ccc;
-  flex-shrink: 0;
-  display: block;
-}
-
-/* star rating row */
-.trainer-rating {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  flex-wrap: wrap;
-}
-
-/* star icons */
+.trainer-card-header { background: #ede6e3; border-radius: 12px 12px 0 0; padding: 1rem 1rem 0.75rem; display: flex; gap: 0.85rem; align-items: flex-start; }
+.trainer-card-header-left { flex: 1; min-width: 0; }
+.trainer-name { font-family: var(--font-body); font-size: 1.05rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.1rem; }
+.trainer-title { font-family: var(--font-body); font-size: 0.75rem; color: #666; margin-bottom: 0.55rem; }
+.trainer-photo { width: 62px; height: 62px; border-radius: 50%; object-fit: cover; background: #ccc; flex-shrink: 0; display: block; }
+.trainer-rating { display: flex; align-items: center; gap: 0.3rem; flex-wrap: wrap; }
 .trainer-stars { display: flex; gap: 1px; }
-
-/* filled star */
 .trainer-stars span { font-size: 0.78rem; color: #f7a033; }
-
-/* empty star */
 .trainer-stars span.empty { color: #ccc; }
+.trainer-rating-num { font-family: var(--font-body); font-size: 0.78rem; font-weight: 700; color: #333; }
+.trainer-rating-count { font-family: var(--font-body); font-size: 0.68rem; color: #888; }
+.trainer-card-body { background: #f5f0ee; border-radius: 0 0 12px 12px; padding: 0.85rem 1rem 1rem; }
+.trainer-about-title { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; color: #482F2F; letter-spacing: 0.05em; margin-bottom: 0.45rem; }
+.trainer-about-list { list-style: disc; padding-left: 1rem; display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.75rem; }
+.trainer-about-list li { font-family: var(--font-body); font-size: 0.75rem; color: #444; line-height: 1.45; }
+.trainer-bio { font-family: var(--font-body); font-size: 0.8rem; color: #555; line-height: 1.55; border-top: 1px solid rgba(72,47,47,0.1); padding-top: 0.65rem; }
+.trainer-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+.trainer-dot { width: 10px; height: 10px; border-radius: 50%; background: #bbb; border: none; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; padding: 0; }
+.trainer-dot.active { background: #482F2F; transform: scale(1.2); }
 
-/* numeric rating */
-.trainer-rating-num {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #333;
-}
-
-/* review count */
-.trainer-rating-count {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  color: #888;
-}
-
-/* 
------------------ 
-Card Body 
------------------ 
+/*
+-----------
+Date Picker
+-----------
 */
+.date-nav { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+.date-scroll-btn { width: 34px; height: 34px; border-radius: 50%; border: 2px solid #ccc; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.2s ease, transform 0.2s ease; flex-shrink: 0; }
+.date-scroll-btn:hover { border-color: #482F2F; transform: translateY(-2px); }
+.date-scroll-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+.date-scroll-btn svg { width: 14px; height: 14px; stroke: #333; }
+.date-grid { display: flex; gap: 0.5rem; flex: 1; }
+.date-chip { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 0.55rem 0.3rem; border-radius: 10px; border: 2px solid transparent; background: #f5f0ee; cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; font-family: var(--font-body); }
+.date-chip:hover { transform: translateY(-3px); border-color: #482F2F; box-shadow: 0 4px 12px rgba(72,47,47,0.12); }
+.date-chip.selected { transform: translateY(-3px); border-color: #482F2F; box-shadow: 0 4px 12px rgba(72,47,47,0.18); background: #f0e8e5; }
+.date-chip-day { font-size: 0.7rem; font-weight: 700; color: #482F2F; letter-spacing: 0.04em; text-transform: uppercase; }
+.date-chip-num { font-size: 1rem; font-weight: 800; color: #1a1a1a; line-height: 1.2; }
+.date-chip-month { font-size: 0.65rem; color: #888; }
+.date-limit-note { font-family: var(--font-body); font-size: 0.75rem; color: #888; margin-top: 0.5rem; font-style: italic; }
 
-/* bottom section with about list and bio */
-.trainer-card-body {
-  background: #f5f0ee;
-  border-radius: 0 0 12px 12px;
-  padding: 0.85rem 1rem 1rem;
-}
-
-/* about section label */
-.trainer-about-title {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #482F2F;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.45rem;
-}
-
-/* about bullet list */
-.trainer-about-list {
-  list-style: disc;
-  padding-left: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  margin-bottom: 0.75rem;
-}
-
-/* each bullet item */
-.trainer-about-list li {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: #444;
-  line-height: 1.45;
-}
-
-/* bio paragraph */
-.trainer-bio {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: #555;
-  line-height: 1.55;
-  border-top: 1px solid rgba(72, 47, 47, 0.1);
-  padding-top: 0.65rem;
-}
-
-/* 
------------------ 
-Carousel Dots 
------------------ 
+/*
+-----------
+Time Slots
+-----------
 */
+.time-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.6rem; }
+.time-chip { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border-radius: 10px; border: 2px solid transparent; background: #f5f0ee; cursor: pointer; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; color: #333; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+.time-chip:hover { transform: translateY(-3px); border-color: #482F2F; box-shadow: 0 4px 12px rgba(72,47,47,0.12); }
+.time-chip.selected { transform: translateY(-3px); border-color: #482F2F; box-shadow: 0 4px 12px rgba(72,47,47,0.18); background: #f0e8e5; }
+.time-chip-arrow { font-size: 0.7rem; color: #482F2F; }
 
-/* dot row below carousel */
-.trainer-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-/* individual dot */
-.trainer-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #bbb;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-  padding: 0;
-}
-
-/* active dot */
-.trainer-dot.active {
-  background: #482F2F;
-  transform: scale(1.2);
-}
-
-/* 
------------------ 
-Date Picker 
------------------ 
+/*
+-----------
+Email Input
+-----------
 */
-
-/* row with arrows and date chips */
-.date-nav {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-/* prev/next arrow buttons */
-.date-scroll-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-  flex-shrink: 0;
-}
-
-/* arrow hover */
-.date-scroll-btn:hover {
-  border-color: #482F2F;
-  transform: translateY(-2px);
-}
-
-/* arrow disabled */
-.date-scroll-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* arrow icon */
-.date-scroll-btn svg {
-  width: 14px;
-  height: 14px;
-  stroke: #333;
-}
-
-/* five date chips in a row */
-.date-grid {
-  display: flex;
-  gap: 0.5rem;
-  flex: 1;
-}
-
-/* individual date chip */
-.date-chip {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.55rem 0.3rem;
-  border-radius: 10px;
-  border: 2px solid transparent;
-  background: #f5f0ee;
-  cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  font-family: var(--font-body);
-}
-
-/* date chip hover */
-.date-chip:hover {
-  transform: translateY(-3px);
-  border-color: #482F2F;
-  box-shadow: 0 4px 12px rgba(72, 47, 47, 0.12);
-}
-
-/* date chip selected */
-.date-chip.selected {
-  transform: translateY(-3px);
-  border-color: #482F2F;
-  box-shadow: 0 4px 12px rgba(72, 47, 47, 0.18);
-  background: #f0e8e5;
-}
-
-/* day abbreviation e.g. Mon */
-.date-chip-day {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #482F2F;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-/* day number e.g. 24 */
-.date-chip-num {
-  font-size: 1rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  line-height: 1.2;
-}
-
-/* month abbreviation e.g. Feb */
-.date-chip-month {
-  font-size: 0.65rem;
-  color: #888;
-}
-
-/* 4 week limit note */
-.date-limit-note {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: #888;
-  margin-top: 0.5rem;
-  font-style: italic;
-}
-
-/* 
------------------ 
-Time Slots 
------------------ 
-*/
-
-/* 3-column grid of time buttons */
-.time-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.6rem;
-}
-
-/* time button */
-.time-chip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6rem 0.75rem;
-  border-radius: 10px;
-  border: 2px solid transparent;
-  background: #f5f0ee;
-  cursor: pointer;
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #333;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* time chip hover */
-.time-chip:hover {
-  transform: translateY(-3px);
-  border-color: #482F2F;
-  box-shadow: 0 4px 12px rgba(72, 47, 47, 0.12);
-}
-
-/* time chip selected */
-.time-chip.selected {
-  transform: translateY(-3px);
-  border-color: #482F2F;
-  box-shadow: 0 4px 12px rgba(72, 47, 47, 0.18);
-  background: #f0e8e5;
-}
-
-.time-chip-arrow {
-  font-size: 0.7rem;
-  color: #482F2F;
-}
-
-/* 
------------------ 
-Email Input 
------------------ 
-*/
-
-/* wrapper for input and error */
 .email-input-wrap { position: relative; }
-
-/* email text input */
-.email-input {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  border-radius: 10px;
-  border: 2px solid #ddd;
-  background: #f9f6f5;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: #333;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-/* focus ring */
+.email-input { width: 100%; padding: 0.85rem 1rem; border-radius: 10px; border: 2px solid #ddd; background: #f9f6f5; font-family: var(--font-body); font-size: 0.9rem; color: #333; outline: none; transition: border-color 0.2s ease; }
 .email-input:focus { border-color: #482F2F; }
-
-/* invalid state */
 .email-input.error { border-color: #e05050; }
-
-/* error message, hidden by default */
-.email-error-msg {
-  display: none;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  color: #e05050;
-  margin-top: 0.4rem;
-}
-
-/* show error message */
+.email-error-msg { display: none; font-family: var(--font-body); font-size: 0.78rem; color: #e05050; margin-top: 0.4rem; }
 .email-error-msg.visible { display: block; }
 
-/* 
------------------ 
-Confirm Button 
------------------ 
+/*
+-----------
+Confirm Button
+-----------
 */
-
-/* full width confirm button */
 .confirm-btn {
-  width: 100%;
-  margin-top: 1.5rem;
-  padding: 0.9rem 2rem;
-  border-radius: 50px;
-  border: none;
-  background: linear-gradient(135deg, #7a4a4a 0%, #482F2F 100%);
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 16px rgba(72, 47, 47, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  width: 100%; margin-top: 1.5rem; padding: 0.9rem 2rem; border-radius: 50px; border: none;
+  background: linear-gradient(135deg,#7a4a4a 0%,#482F2F 100%); color: #fff;
+  font-family: var(--font-body); font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(72,47,47,0.3); display: flex; align-items: center; justify-content: center; gap: 0.5rem;
 }
-
-/* confirm button hover */
-.confirm-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(72, 47, 47, 0.4);
-}
-
-/* confirm button press */
+.confirm-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(72,47,47,0.4); }
 .confirm-btn:active { transform: translateY(-1px); }
 
-/* 
------------------ 
-Success Modal 
------------------ 
+/*
+-----------
+Success Modal
+-----------
 */
-
-/* fullscreen overlay */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
-/* show modal */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
 .modal-overlay.visible { display: flex; }
-
-/* modal card */
-.modal-box {
-  background: #fff;
-  border-radius: 18px;
-  padding: 2.5rem 2rem;
-  max-width: 360px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  animation: modal-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* load animation */
+.modal-box { background: #fff; border-radius: 18px; padding: 2.5rem 2rem; max-width: 360px; width: 100%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); animation: modal-in 0.3s cubic-bezier(0.34,1.56,0.64,1); }
 @keyframes modal-in {
   from { opacity: 0; transform: scale(0.85) translateY(20px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
+.modal-tick { width: 60px; height: 60px; border-radius: 50%; border: 3px solid #4CAF50; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+.modal-tick svg { width: 28px; height: 28px; stroke: #4CAF50; stroke-width: 2.5; fill: none; }
+.modal-title { font-family: var(--font-body); font-size: 1.4rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.75rem; }
+.modal-body { font-family: var(--font-body); font-size: 0.9rem; color: #555; line-height: 1.65; margin-bottom: 1.5rem; }
+.modal-body strong { color: #482F2F; font-weight: 700; }
+.modal-close-btn { padding: 0.65rem 2rem; border-radius: 50px; border: 2px solid #482F2F; background: transparent; color: #482F2F; font-family: var(--font-body); font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
+.modal-close-btn:hover { background: #482F2F; color: #fff; transform: translateY(-2px); }
 
-/* green tick circle */
-.modal-tick {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 3px solid #4CAF50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.25rem;
-}
-
-/* tick icon */
-.modal-tick svg {
-  width: 28px;
-  height: 28px;
-  stroke: #4CAF50;
-  stroke-width: 2.5;
-  fill: none;
-}
-
-/* success heading */
-.modal-title {
-  font-family: var(--font-body);
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 0.75rem;
-}
-
-/* booking details text */
-.modal-body {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.65;
-  margin-bottom: 1.5rem;
-}
-
-.modal-body strong {
-  color: #482F2F;
-  font-weight: 700;
-}
-
-/* completed button */
-.modal-close-btn {
-  padding: 0.65rem 2rem;
-  border-radius: 50px;
-  border: 2px solid #482F2F;
-  background: transparent;
-  color: #482F2F;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-/* completed button hover */
-.modal-close-btn:hover {
-  background: #482F2F;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-/* 
------------------ 
-Responsive 
------------------ 
+/*
+-----------
+Bookings Responsive
+-----------
 */
-
-/* desktop: show both cards side by side with no carousel behaviour */
 @media (min-width: 600px) {
-  /* hide drag hint on desktop */
   .bookings-drag-hint { display: none; }
-
-  /* hide carousel dots on desktop */
   .trainer-dots { display: none; }
-
-  /* remove carousel padding */
   .trainer-carousel-wrap { padding-inline: 0; }
-
-  /* disable slide transform on desktop */
-  .trainer-carousel-track {
-    transform: none !important;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  /* fixed card width side by side on desktop */
-  .trainer-card {
-    flex: 0 0 280px;
-    cursor: pointer;
-  }
+  .trainer-carousel-track { transform: none !important; justify-content: center; flex-wrap: wrap; }
+  .trainer-card { flex: 0 0 280px; }
+}
+@media (max-width: 480px) {
+  .time-grid { grid-template-columns: repeat(2,1fr); }
+  .date-chip-num { font-size: 0.85rem; }
 }
 
-@media (max-width: 480px) {
-  /* 2 columns on small screens */
-  .time-grid { grid-template-columns: repeat(2, 1fr); }
+/*
+-----------
+Dashboard
+-----------
+*/
+.dashboard-welcome { margin-bottom: 1.5rem; }
+.dashboard-welcome h2 { font-size: 1.1rem; font-weight: 600; color: var(--text-mid); }
+.dashboard-welcome .user-name { font-size: 1.6rem; font-weight: 800; color: var(--text-dark); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 2px; }
+.this-week-card { background: var(--card-bg); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm); }
+.this-week-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--text-mid); margin-bottom: 0.5rem; }
+.this-week-card .completion { font-size: 1.6rem; font-weight: 800; color: var(--text-dark); margin-bottom: 1rem; }
+.this-week-card .completion span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+.session-checklist { display: flex; flex-direction: column; gap: 0.55rem; }
+.checklist-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+.checklist-item:last-child { border-bottom: none; }
+.check-box { width: 22px; height: 22px; border-radius: 6px; border: 2px solid #ccc; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background var(--transition), border-color var(--transition); }
+.check-box.checked { background: var(--accent); border-color: var(--accent); }
+.check-box svg { width: 12px; height: 12px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity var(--transition); }
+.check-box.checked svg { opacity: 1; }
+.checklist-day { font-size: 0.82rem; font-weight: 700; color: var(--text-mid); width: 32px; flex-shrink: 0; }
+.checklist-workout { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
+.section-label { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.85rem; }
+.quick-actions { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.75rem; }
+.quick-action-btn { display: flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.1rem; background: #ede6e3; border-radius: var(--radius-sm); border: none; font-size: 0.88rem; font-weight: 600; color: var(--text-dark); cursor: pointer; width: 100%; text-align: left; transition: transform var(--transition), box-shadow var(--transition); }
+.quick-action-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+.quick-action-btn .plus { width: 22px; height: 22px; background: var(--accent); border-radius: 50%; color: #fff; font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.info-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+.info-box { background: var(--card-bg); border-radius: var(--radius); padding: 1.1rem; box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition); }
+.info-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.info-box h4 { font-size: 0.85rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.5rem; }
+.info-box p { font-size: 0.75rem; color: var(--text-mid); line-height: 1.55; }
 
-  /* smaller date numbers */
-  .date-chip-num { font-size: 0.85rem; }
+/*
+-----------
+My Workouts
+-----------
+*/
+.empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
+.empty-state p { font-size: 0.9rem; line-height: 1.6; }
+.workout-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.workout-card { background: var(--card-bg); border-radius: var(--radius); padding: 0.85rem 0.75rem; display: flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-sm); transition: transform var(--transition); min-width: 0; overflow: hidden; }
+.workout-card:hover { transform: translateY(-2px); }
+.workout-drag-handle { display: flex; flex-direction: column; gap: 3px; cursor: grab; padding: 4px; flex-shrink: 0; }
+.workout-drag-handle span { display: block; width: 14px; height: 2px; background: #ccc; border-radius: 2px; }
+.workout-thumb { width: 48px; height: 42px; border-radius: 8px; object-fit: cover; background: #ede6e3; flex-shrink: 0; }
+.workout-thumb-placeholder { width: 48px; height: 42px; border-radius: 8px; background: #ede6e3; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.workout-thumb-placeholder svg { width: 22px; height: 22px; stroke: #bbb; fill: none; }
+.workout-info { flex: 1; min-width: 0; }
+.workout-info .workout-title { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.workout-info .workout-muscles { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.workout-info .workout-ex-count { font-size: 0.72rem; font-weight: 600; color: var(--accent-dark); }
+.workout-info .workout-ex-count::before { content: '▾ '; }
+.workout-actions { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+.workout-action-btn { width: 32px; height: 32px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; transition: background var(--transition); }
+.workout-action-btn:hover { background: #ede6e3; }
+.workout-action-btn svg { width: 15px; height: 15px; stroke: var(--accent-dark); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.delete-workout-btn:hover { background: #fde8e8; }
+.delete-workout-btn svg { stroke: #c0392b; }
+.workout-add-btn { width: 30px; height: 30px; border-radius: 50%; border: none; font-size: 1rem; font-weight: 700; cursor: pointer; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform var(--transition), background var(--transition); }
+.workout-add-btn:hover { transform: translateY(-2px); background: var(--accent-dark); }
+.workout-add-btn.added { background: #c0392b; }
+.workout-add-btn.added:hover { background: #a93226; }
+
+/*
+-----------
+Create Workout
+-----------
+*/
+.workout-form-area { display: flex; flex-direction: column; gap: 1rem; }
+.session-name-row { display: flex; align-items: center; gap: 0.75rem; }
+.form-label { font-size: 0.8rem; font-weight: 700; color: var(--text-mid); white-space: nowrap; min-width: 90px; }
+.form-input { flex: 1; padding: 0.65rem 1rem; border-radius: 50px; border: 2px solid #e0d8d7; background: #fff; font-size: 0.85rem; color: var(--text-dark); outline: none; transition: border-color var(--transition); }
+.form-input:focus { border-color: var(--accent); }
+.form-input::placeholder { color: #bbb; }
+.file-upload-area { border: 2px dashed #d0c8c7; border-radius: var(--radius); padding: 2rem 1rem; text-align: center; background: #fff; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: border-color var(--transition), background var(--transition); }
+.file-upload-area:hover { border-color: var(--accent); background: #faf6f5; }
+.file-upload-area svg { width: 36px; height: 36px; stroke: #ccc; fill: none; stroke-width: 1.5; margin-bottom: 0.5rem; }
+.file-upload-area p { font-size: 0.82rem; color: var(--text-muted); font-weight: 600; }
+.file-upload-area small { font-size: 0.72rem; color: #bbb; }
+.cw-preview-img { display: none; width: 100%; max-height: 140px; object-fit: cover; border-radius: var(--radius-sm); }
+.exercise-entries { display: flex; flex-direction: column; gap: 0.75rem; }
+.exercise-entry { background: #fff; border-radius: var(--radius-sm); padding: 0.85rem 1rem; display: flex; flex-direction: column; gap: 0.65rem; box-shadow: var(--shadow-sm); }
+.exercise-entry-row { display: flex; align-items: center; gap: 0.6rem; }
+.exercise-entry-row .form-input { border-radius: 50px; }
+.reps-sets-row { display: flex; gap: 0.65rem; }
+.reps-sets-row .form-input { flex: 1; }
+.delete-exercise-btn { width: 32px; height: 32px; border-radius: 50%; border: none; background: #fde8e8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: background var(--transition); }
+.delete-exercise-btn:hover { background: #f5c6c6; }
+.delete-exercise-btn svg { width: 14px; height: 14px; stroke: #c0392b; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.form-bottom-actions { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
+
+/*
+-----------
+My Sessions
+-----------
+*/
+.sessions-view--hidden { display: none; }
+.week-nav { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.25rem; }
+.week-nav-btn { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ccc; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color var(--transition); }
+.week-nav-btn:hover { border-color: var(--accent); }
+.week-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.week-nav-btn svg { width: 12px; height: 12px; stroke: var(--text-dark); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.week-label { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); }
+.sessions-day-list { display: flex; flex-direction: column; gap: 0.85rem; }
+.session-day-row { display: flex; flex-direction: column; gap: 0.35rem; }
+.session-day-label { font-size: 0.82rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.4rem; }
+.session-day-content { background: var(--card-bg); border-radius: var(--radius-sm); padding: 0.75rem 1rem; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 0.75rem; }
+.session-day-empty { font-size: 0.8rem; color: var(--text-muted); font-style: italic; padding: 0.4rem 0; }
+.session-thumb { width: 50px; height: 42px; border-radius: 7px; object-fit: cover; background: #ede6e3; flex-shrink: 0; }
+.session-info { flex: 1; min-width: 0; }
+.session-info .session-title { font-size: 0.85rem; font-weight: 700; color: var(--text-dark); }
+.session-info .session-muscles { font-size: 0.7rem; color: var(--text-muted); }
+.session-info .session-ex-count { font-size: 0.7rem; font-weight: 600; color: var(--accent-dark); }
+.sessions-bottom-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.session-action-icon { width: 38px; height: 38px; border-radius: 50%; border: none; background: #ede6e3; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background var(--transition), transform var(--transition); }
+.session-action-icon:hover { background: #ddd0ce; transform: translateY(-2px); }
+.session-action-icon svg { width: 16px; height: 16px; stroke: var(--accent-dark); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/*
+-----------
+Create Session
+-----------
+*/
+.create-session-week-select { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+.cs-week-label { font-size: 0.82rem; font-weight: 700; color: var(--text-mid); }
+.cs-week-row { display: flex; align-items: center; gap: 0.5rem; width: fit-content; }
+.cs-week-name { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+.cs-recurring-label { display: inline-flex; align-items: center; gap: 0.55rem; cursor: pointer; margin-bottom: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--text-mid); user-select: none; }
+.cs-recurring-label input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; border-radius: 5px; border: 2px solid #ccc; background: #fff; cursor: pointer; position: relative; flex-shrink: 0; transition: background var(--transition), border-color var(--transition); }
+.cs-recurring-label input[type="checkbox"]:checked { background: var(--accent); border-color: var(--accent); }
+.cs-recurring-label input[type="checkbox"]:checked::after { content: ''; position: absolute; left: 3px; top: 1px; width: 8px; height: 5px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg); }
+.cs-week-dates { background: var(--card-bg); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; box-shadow: var(--shadow-sm); font-size: 0.8rem; color: var(--text-mid); display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 0.5rem; }
+.workout-pool-hint { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.4rem; flex-wrap: wrap; line-height: 1.5; }
+.workout-pool { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+.pool-empty-msg { font-size: 0.8rem; color: var(--text-muted); font-style: italic; padding: 0.5rem 0; }
+.pool-card { background: var(--card-bg); border-radius: var(--radius-sm); padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 0.65rem; box-shadow: var(--shadow-sm); cursor: pointer; border: 2px solid transparent; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+.pool-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+.pool-card .pool-thumb { width: 44px; height: 36px; border-radius: 6px; background: #ede6e3; flex-shrink: 0; object-fit: cover; }
+.pool-card .pool-info { flex: 1; min-width: 0; }
+.pool-card .pool-title { font-size: 0.82rem; font-weight: 700; color: var(--text-dark); }
+.pool-card .pool-ex { font-size: 0.7rem; color: var(--accent-dark); font-weight: 600; }
+.pool-drag { display: flex; flex-direction: column; gap: 3px; flex-shrink: 0; }
+.pool-drag span,
+.workout-drag-handle span,
+.cs-drag-handle span { display: block; width: 14px; height: 2px; background: #ccc; border-radius: 2px; }
+.cs-day-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+.cs-day-row { background: var(--card-bg); border-radius: var(--radius-sm); padding: 0.75rem 1rem; box-shadow: var(--shadow-sm); }
+.cs-day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+.cs-day-name { font-size: 0.85rem; font-weight: 700; color: var(--text-dark); }
+.cs-drag-handle { display: flex; flex-direction: column; gap: 3px; }
+.cs-day-assigned { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem; background: #faf6f5; border-radius: 8px; }
+.cs-day-assigned .session-title { font-size: 0.82rem; font-weight: 700; color: var(--text-dark); flex: 1; }
+.cs-day-assigned .session-ex-count { font-size: 0.7rem; color: var(--accent-dark); font-weight: 600; }
+.cs-remove-btn { width: 22px; height: 22px; border-radius: 50%; border: none; background: #fde8e8; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.cs-remove-btn svg { width: 10px; height: 10px; stroke: #c0392b; fill: none; stroke-width: 2.5; }
+.cs-drop-zone { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-muted); font-style: italic; padding: 0.25rem 0.5rem; }
+
+/*
+-----------
+Planner Responsive
+-----------
+*/
+@media (max-width: 640px) {
+  .info-boxes { grid-template-columns: 1fr; }
+  .workout-thumb, .workout-thumb-placeholder { width: 38px; height: 34px; }
+  .workout-card { padding: 0.65rem 0.5rem; gap: 0.35rem; }
+  .workout-info .workout-title  { font-size: 0.8rem; }
+  .workout-info .workout-muscles { font-size: 0.65rem; }
+  .workout-info .workout-ex-count { font-size: 0.65rem; }
+  .workout-add-btn { width: 26px; height: 26px; font-size: 0.9rem; }
+  .page-header { flex-wrap: wrap; gap: 0.4rem; }
 }
