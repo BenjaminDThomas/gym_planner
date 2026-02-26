@@ -275,9 +275,47 @@ function addExerciseEntry(data) {
     '<div class="reps-sets-row">',
       '<input type="text" class="form-input ex-reps" placeholder="Enter reps..." value="' + v('reps') + '">',
       '<input type="text" class="form-input ex-sets" placeholder="Enter sets..." value="' + v('sets') + '">',
+    '</div>',
+    '<div class="ex-media-row">',
+      '<div class="ex-video-upload">',
+        '<svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>',
+        '<span>Add video</span>',
+        '<input type="file" class="ex-video-input" accept="video/*" style="display:none">',
+      '</div>',
+      '<div class="ex-video-preview" style="display:none">',
+        '<video class="ex-video-player" controls playsinline></video>',
+        '<button class="ex-video-remove" title="Remove video">',
+          '<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+        '</button>',
+      '</div>',
     '</div>'
   ].join('');
   entry.querySelector('.delete-exercise-btn').addEventListener('click', function() { entry.remove(); });
+  /* video upload logic */
+  var videoUpload  = entry.querySelector('.ex-video-upload');
+  var videoInput   = entry.querySelector('.ex-video-input');
+  var videoPreview = entry.querySelector('.ex-video-preview');
+  var videoPlayer  = entry.querySelector('.ex-video-player');
+  var videoRemove  = entry.querySelector('.ex-video-remove');
+  videoUpload.addEventListener('click', function() { videoInput.click(); });
+  function loadVideo(file) {
+    videoPlayer.src = URL.createObjectURL(file);
+    var reader = new FileReader();
+    reader.onload = function(ev) { videoPlayer.dataset.base64 = ev.target.result; };
+    reader.readAsDataURL(file);
+    videoUpload.style.display = 'none'; videoPreview.style.display = 'flex';
+  }
+  videoInput.addEventListener('change', function(e) { if (e.target.files[0]) loadVideo(e.target.files[0]); });
+  videoRemove.addEventListener('click', function() {
+    videoPlayer.src = ''; videoPlayer.dataset.base64 = '';
+    videoUpload.style.display = 'flex'; videoPreview.style.display = 'none';
+    videoInput.value = '';
+  });
+  /* restore saved video when editing */
+  if (data && data.videoData) {
+    videoPlayer.src = data.videoData; videoPlayer.dataset.base64 = data.videoData;
+    videoUpload.style.display = 'none'; videoPreview.style.display = 'flex';
+  }
   document.getElementById('exerciseEntries').appendChild(entry);
 }
 /* save / update workout */
@@ -291,8 +329,9 @@ document.getElementById('saveWorkoutBtn').addEventListener('click', function() {
     var n = entry.querySelector('.ex-name').value.trim();
     var r = entry.querySelector('.ex-reps').value.trim();
     var s = entry.querySelector('.ex-sets').value.trim();
+    var vd = entry.querySelector('.ex-video-player').dataset.base64 || '';
     if (!n) { valid = false; return; }
-    exercises.push({ name: n, reps: r, sets: s });
+    exercises.push({ name: n, reps: r, sets: s, videoData: vd });
   });
   if (!valid) { showToast('Please fill in all exercise names.'); return; }
   var imageData = document.getElementById('cwPreviewImg').style.display !== 'none'
@@ -367,6 +406,10 @@ function renderWorkoutList() {
         '</button>',
       '</div>'
     ].join('');
+    /* click card body to view */
+    card.addEventListener('click', function(e) {
+      if (!e.target.closest('.workout-actions')) openWorkoutView(w.id);
+    });
     /* edit button */
     card.querySelector('.edit-workout-btn').addEventListener('click', function() {
       startCreateWorkout(w.id);
@@ -618,6 +661,7 @@ function renderSessionsView() {
       contentHtml = '<div class="session-day-content"><span class="session-day-empty">No session today</span></div>';
     }
     row.innerHTML = '<div class="session-day-label">' + day + '</div>' + contentHtml;
+    if (w) { row.classList.add('session-day-row--clickable'); row.addEventListener('click', function() { openWorkoutView(w.id); }); }
     list.appendChild(row);
   });
 }
@@ -716,6 +760,51 @@ function renderDashboard() {
 function updateCompletionText(c, t) {
   document.getElementById('dashCompletion').innerHTML = c + ' <span>/ ' + t + ' Completed</span>';
 }
+
+/* 
+----------------- 
+View Workout Modal 
+----------------- 
+*/
+/* open read-only workout modal */
+function openWorkoutView(wId) {
+  var w = workouts.find(function(x) { return x.id === wId; });
+  if (!w) return;
+  var img       = document.getElementById('viewModalImg');
+  var nameEl    = document.getElementById('viewModalName');
+  var musclesEl = document.getElementById('viewModalMuscles');
+  var exList    = document.getElementById('viewModalExercises');
+  nameEl.textContent    = w.name;
+  musclesEl.textContent = w.muscles;
+  if (w.imageData) { img.src = w.imageData; img.style.display = 'block'; }
+  else             { img.src = ''; img.style.display = 'none'; }
+  exList.innerHTML = '';
+  w.exercises.forEach(function(ex, i) {
+    var row = document.createElement('div');
+    row.className = 'view-ex-row';
+    row.innerHTML =
+      '<div class="view-ex-num">' + (i + 1) + '</div>' +
+      '<div class="view-ex-info">' +
+        '<div class="view-ex-name">' + escHtml(ex.name) + '</div>' +
+        '<div class="view-ex-meta">' +
+          (ex.reps ? '<span>Reps: <strong>' + escHtml(ex.reps) + '</strong></span>' : '') +
+          (ex.sets ? '<span>Sets: <strong>' + escHtml(ex.sets) + '</strong></span>' : '') +
+        '</div>' +
+        (ex.videoData ? '<video class="view-ex-video" src="' + ex.videoData + '" controls playsinline></video>' : '') +
+      '</div>';
+    exList.appendChild(row);
+  });
+  document.getElementById('viewModal').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+/* close view modal */
+document.getElementById('viewModalClose').addEventListener('click', function() {
+  document.getElementById('viewModal').classList.remove('visible');
+  document.body.style.overflow = '';
+});
+document.getElementById('viewModal').addEventListener('click', function(e) {
+  if (e.target === this) { this.classList.remove('visible'); document.body.style.overflow = ''; }
+});
 /* load data first, then render everything */
 loadFromStorage();
 initCreateSession();
