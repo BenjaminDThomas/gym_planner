@@ -43,9 +43,9 @@
     </header>
     <!-- ------- Bookings Page ------- -->
     <main class="bookings-page">
-        <div class="bookings-container">
+        <article class="bookings-container">
             <!-- Page Header -->
-            <div class="bookings-header">
+            <header class="bookings-header">
                 <h1>Book Personal Trainer</h1>
                 <p>Get expert guidance to reach your fitness goals.<br>Select a trainer and time for your session.</p>
                 <span class="bookings-drag-hint">
@@ -55,20 +55,20 @@
                     </svg>
                     Drag Personal Trainers
                 </span>
-            </div>
+            </header>
             <!-- Trainer Carousel -->
             <section class="bookings-section" aria-label="Select trainer">
                 <div class="trainer-carousel-outer">
                     <div class="trainer-carousel-wrap" id="trainerCarousel">
                         <div class="trainer-carousel-track" id="trainerTrack">
                             <!-- Trainer 1: Jonathon Jones -->
-                            <div class="trainer-card" data-trainer="0" role="button" tabindex="0" aria-label="Select Jonathon Jones">
+                            <article class="trainer-card" data-trainer="0" role="button" tabindex="0" aria-label="Select Jonathon Jones">
                                 <!-- Trainer Selected -->
-                                <div class="trainer-selected-label">SELECTED</div>
-                                <div class="trainer-card-header">
+                                <span class="trainer-selected-label">SELECTED</span>
+                                <header class="trainer-card-header">
                                     <div class="trainer-card-header-left">
-                                        <div class="trainer-name">Jonathon Jones</div>
-                                        <div class="trainer-title">Certified Personal Trainer</div>
+                                        <p class="trainer-name">Jonathon Jones</p>
+                                        <p class="trainer-title">Certified Personal Trainer</p>
                                         <div class="trainer-rating">
                                             <div class="trainer-stars" aria-hidden="true">
                                                 <span>★</span><span>★</span><span>★</span><span>★</span><span class="empty">★</span>
@@ -78,10 +78,10 @@
                                         </div>
                                     </div>
                                     <img class="trainer-photo" src="images/profile_picture_male.png" alt="Jonathon Jones">
-                                </div>
+                                </header>
                                 <!-- Trainer Body Section -->
                                 <div class="trainer-card-body">
-                                    <div class="trainer-about-title">About Jonathon</div>
+                                    <p class="trainer-about-title">About Jonathon</p>
                                     <ul class="trainer-about-list">
                                         <li>Specialties: Strength Training, Weight Loss, Nutrition</li>
                                         <li>7+ Years Experience as a certified personal trainer</li>
@@ -89,14 +89,14 @@
                                     </ul>
                                     <p class="trainer-bio">Hi, I'm Jonathon, an experienced trainer here to help you reach your fitness goals with personalised workouts.</p>
                                 </div>
-                            </div>
+                            </article>
                             <!-- Trainer 2: Sarah Chambers -->
-                            <div class="trainer-card" data-trainer="1" role="button" tabindex="0" aria-label="Select Sarah Chambers">
-                                <div class="trainer-selected-label">SELECTED</div>
-                                <div class="trainer-card-header">
+                            <article class="trainer-card" data-trainer="1" role="button" tabindex="0" aria-label="Select Sarah Chambers">
+                                <span class="trainer-selected-label">SELECTED</span>
+                                <header class="trainer-card-header">
                                     <div class="trainer-card-header-left">
-                                        <div class="trainer-name">Sarah Chambers</div>
-                                        <div class="trainer-title">Certified Personal Trainer</div>
+                                        <p class="trainer-name">Sarah Chambers</p>
+                                        <p class="trainer-title">Certified Personal Trainer</p>
                                         <div class="trainer-rating">
                                             <div class="trainer-stars" aria-hidden="true">
                                                 <span>★</span><span>★</span><span>★</span><span class="empty">★</span><span class="empty">★</span>
@@ -106,9 +106,9 @@
                                         </div>
                                     </div>
                                     <img class="trainer-photo" src="images/profile_picture_female.png" alt="Sarah Chambers">
-                                </div>
+                                </header>
                                 <div class="trainer-card-body">
-                                    <div class="trainer-about-title">About Sarah</div>
+                                    <p class="trainer-about-title">About Sarah</p>
                                     <ul class="trainer-about-list">
                                         <li>Specialties: Strength Training, Weight Loss, Nutrition</li>
                                         <li>3+ Years Experience as a certified personal trainer</li>
@@ -116,7 +116,7 @@
                                     </ul>
                                     <p class="trainer-bio">Hi, I'm Sarah, an experienced trainer here to help you reach your fitness goals with personalised workouts.</p>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                     </div>
                     <!-- Carousel Dots -->
@@ -128,7 +128,7 @@
             </section>
             <!-- Select Date -->
             <section class="bookings-section" aria-label="Select date">
-                <div class="bookings-section-title">Select Date</div>
+                <h2 class="bookings-section-title">Select Date</h2>
                 <div class="date-nav">
                     <button class="date-scroll-btn" id="datePrev" aria-label="Previous week" disabled>
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -142,11 +142,11 @@
                         </svg>
                     </button>
                 </div>
-                <div class="date-limit-note">Bookings available up to 4 weeks in advance</div>
+                <p class="date-limit-note">Bookings available up to 4 weeks in advance</p>
             </section>
             <!-- Select Time -->
             <section class="bookings-section" aria-label="Select time">
-                <div class="bookings-section-title">Select Time</div>
+                <h2 class="bookings-section-title">Select Time</h2>
                 <div class="time-grid" id="timeGrid">
                     <button class="time-chip" data-time="9:00 am">9:00 am <span class="time-chip-arrow">›</span></button>
                     <button class="time-chip" data-time="10:00 am">10:00 am <span class="time-chip-arrow">›</span></button>
@@ -158,17 +158,17 @@
             </section>
             <!-- Enter Email -->
             <section class="bookings-section" aria-label="Enter email">
-                <div class="bookings-section-title">Enter Email</div>
+                <h2 class="bookings-section-title">Enter Email</h2>
                 <div class="email-input-wrap">
                     <input type="email" class="email-input" id="emailInput" placeholder="Enter email address here..." autocomplete="email"/>
-                    <div class="email-error-msg" id="emailError">Please enter a valid email address.</div>
+                    <p class="email-error-msg" id="emailError">Please enter a valid email address.</p>
                 </div>
             </section>
             <!-- Confirm Button -->
             <button class="confirm-btn" id="confirmBtn">
                 <span>+</span> Confirm Booking
             </button>
-        </div>
+        </article>
     </main>
     <!-- Success Modal -->
     <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -176,8 +176,8 @@
             <div class="modal-tick" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            <div class="modal-title" id="modalTitle">Success!</div>
-            <div class="modal-body" id="modalBody"></div>
+            <h2 class="modal-title" id="modalTitle">Success!</h2>
+            <p class="modal-body" id="modalBody"></p>
             <button class="modal-close-btn" id="modalClose">Done</button>
         </div>
     </div>
@@ -217,21 +217,21 @@
         <!-- Divider -->
         <div class="footer-rule"></div>
         <!-- Contact Details -->
-        <div class="footer-contact">
+        <address class="footer-contact">
         <span>Phone: <a href="tel:+441234567">+44 1234 567</a></span>
         <span class="sep" aria-hidden="true">|</span>
         <span>Email: <a href="mailto:gymplanner@gmail.com">gymplanner@gmail.com</a></span>
-        </div>
+        </address>
         <!-- Divider -->
         <div class="footer-rule footer-rule--short"></div>
         <!-- Bottom Terms and Conditions -->
-        <div class="footer-bottom">
+        <small class="footer-bottom">
             <span>Copyright &copy; 2025</span>
             <span class="sep" aria-hidden="true">|</span>
             <a href="#">Privacy Policy</a>
             <span class="sep" aria-hidden="true">|</span>
             <a href="#">Terms &amp; Conditions</a>
-        </div>
+        </small>
     </div>
     </footer>
     <!-- Scripts -->

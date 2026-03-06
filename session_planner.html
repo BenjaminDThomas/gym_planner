@@ -46,18 +46,18 @@
         <!-- ------- Sidebar ------- -->
         <aside class="sidebar" id="plannerSidebar">
             <!-- Dumbbell Icon -->
-            <div class="sidebar-icon">
+            <figure class="sidebar-icon">
                 <img src="../images/dumbbell_icon.png" alt="Gym Planner" id="dumbbellIcon"
                      onerror="this.outerHTML='<svg width=\'28\' height=\'28\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'rgba(255,255,255,0.8)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M6 4v16M18 4v16M6 8h12M6 16h12M2 8h4M18 8h4M2 16h4M18 16h4\'/></svg>'">
-            </div>
+            </figure>
             <!-- Profile Picture -->
-            <div class="sidebar-profile" id="profileBtn" title="Change profile picture">
+            <figure class="sidebar-profile" id="profileBtn" title="Change profile picture">
                 <img src="../images/profile_picture_male.png" alt="Profile" id="profileImg"
                      onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'62\' height=\'62\' viewBox=\'0 0 62 62\'><circle cx=\'31\' cy=\'31\' r=\'31\' fill=\'%23ede6e3\'/><circle cx=\'31\' cy=\'24\' r=\'10\' fill=\'%23988483\'/><ellipse cx=\'31\' cy=\'50\' rx=\'18\' ry=\'12\' fill=\'%23988483\'/></svg>'">
                 <div class="sidebar-profile-edit">
                     <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                 </div>
-            </div>
+            </figure>
             <!-- Sidebar Nav -->
             <nav class="sidebar-nav">
                 <button class="sidebar-btn active" data-page="dashboard">Dashboard</button>
@@ -75,25 +75,25 @@
         <main class="main-content">
             <!-- ------- Dashboard ------- -->
             <section class="page active" id="page-dashboard">
-                <div class="page-header">
+                <header class="page-header">
                     <h1 class="page-title">Dashboard</h1>
-                </div>
+                </header>
                 <div class="dashboard-welcome">
                     <h2>Welcome back!</h2>
-                    <div class="user-name">Ben</div>
+                    <p class="user-name">Ben</p>
                 </div>
                 <!-- This Week Card -->
-                <div class="this-week-card">
+                <article class="this-week-card">
                     <h3>This Week</h3>
-                    <div class="completion" id="dashCompletion">0 <span>/ 0 Completed</span></div>
+                    <p class="completion" id="dashCompletion">0 <span>/ 0 Completed</span></p>
                     <div class="session-checklist" id="dashChecklist">
-                        <div class="checklist-item" style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">
+                        <p class="checklist-item" style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">
                             No sessions scheduled — create one in My Sessions
-                        </div>
+                        </p>
                     </div>
-                </div>
+                </article>
                 <!-- Quick Actions -->
-                <div class="section-label">Quick Actions</div>
+                <p class="section-label">Quick Actions</p>
                 <div class="quick-actions">
                     <button class="quick-action-btn" id="dashCreateWorkout">
                         <span class="plus">+</span> Create Workout
@@ -104,41 +104,41 @@
                 </div>
                 <!-- Info Boxes -->
                 <div class="info-boxes">
-                    <div class="info-box">
+                    <article class="info-box">
                         <h4>Access Anytime, Anywhere</h4>
                         <p>Your exercise sessions are stored and accessible from any device with internet access.</p>
-                    </div>
-                    <div class="info-box">
+                    </article>
+                    <article class="info-box">
                         <h4>User-Defined Sessions</h4>
                         <p>Create completely custom workout routines with your preferred exercises, durations, and rest periods.</p>
-                    </div>
+                    </article>
                 </div>
             </section>
             <!-- ai generated-->
             <!-- ------- My Workouts ------- -->
             <section class="page" id="page-my-workouts">
-                <div class="page-header">
+                <header class="page-header">
                     <h1 class="page-title">My Workouts</h1>
                     <button class="btn-primary" id="newWorkoutBtn">+ New Workout</button>
-                </div>
+                </header>
                 <div id="workoutsListContainer">
                     <!-- Empty State -->
-                    <div class="empty-state" id="workoutsEmpty">
-                        <p>No workouts here yet.<br>Click <strong>+ New Workout</strong> to get started.</p>
-                    </div>
+                    <p class="empty-state" id="workoutsEmpty">
+                        No workouts here yet.<br>Click <strong>+ New Workout</strong> to get started.
+                    </p>
                     <!-- Workout List -->
-                    <div class="workout-list" id="workoutList"></div>
+                    <ul class="workout-list" id="workoutList"></ul>
                 </div>
             </section>
             <!-- ------- Create Workout ------- -->
             <section class="page" id="page-create-workout">
-                <div class="page-header">
+                <header class="page-header">
                     <h1 class="page-title">Create Workout</h1>
-                </div>
+                </header>
                 <div class="workout-form-area">
                     <!-- Session Name -->
                     <div class="session-name-row">
-                        <span class="form-label">Session Name</span>
+                        <label class="form-label" for="cwSessionName">Session Name</label>
                         <input type="text" class="form-input" id="cwSessionName" placeholder="Enter title here...">
                     </div>
                     <!-- Image Upload -->
@@ -165,15 +165,15 @@
             </section>
             <!-- ------- My Sessions ------- -->
             <section class="page" id="page-my-sessions">
-                <div class="page-header">
+                <header class="page-header">
                     <h1 class="page-title">My Sessions</h1>
                     <button class="btn-primary" id="createSessionBtn">+ Create Session</button>
-                </div>
+                </header>
                 <div id="sessionsContent">
                     <!-- Empty State -->
-                    <div class="empty-state" id="sessionsEmpty">
-                        <p>No sessions yet.<br>Click <strong>+ Create Session</strong> to schedule your week.</p>
-                    </div>
+                    <p class="empty-state" id="sessionsEmpty">
+                        No sessions yet.<br>Click <strong>+ Create Session</strong> to schedule your week.
+                    </p>
                     <!-- Sessions View -->
                     <div id="sessionsView" class="sessions-view--hidden">
                         <!-- Week Navigation -->
@@ -187,7 +187,7 @@
                             </button>
                         </div>
                         <!-- Day List -->
-                        <div class="sessions-day-list" id="sessionsDayList"></div>
+                        <ul class="sessions-day-list" id="sessionsDayList"></ul>
                         <!-- Session Actions -->
                         <div class="sessions-bottom-actions">
                             <button class="session-action-icon" id="deleteSessionBtn" title="Delete session">
@@ -202,12 +202,12 @@
             </section>
             <!-- ------- Create Session ------- -->
             <section class="page" id="page-create-session">
-                <div class="page-header">
+                <header class="page-header">
                     <h1 class="page-title">Create Session</h1>
-                </div>
+                </header>
                 <!-- Week Selector -->
                 <div class="create-session-week-select">
-                    <div class="cs-week-label">Select a Week:</div>
+                    <p class="cs-week-label">Select a Week:</p>
                     <div class="cs-week-row">
                         <button class="week-nav-btn" id="csMonthPrev">
                             <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
@@ -226,16 +226,16 @@
                     <div id="csWeekDates" class="cs-week-dates"></div>
                 </div>
                 <!-- Workout Pool Hint -->
-                <div class="workout-pool-hint">
+                <p class="workout-pool-hint">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 16 3 12 7 8"/><polyline points="17 8 21 12 17 16"/></svg>
                     Drag a workout onto a day below, or click it to auto-assign — only workouts added via <strong>+ Add</strong> appear here
-                </div>
+                </p>
                 <!-- Workout Pool -->
                 <div class="workout-pool" id="csWorkoutPool">
-                    <div class="pool-empty-msg">No workouts created yet — go to My Workouts first.</div>
+                    <p class="pool-empty-msg">No workouts created yet — go to My Workouts first.</p>
                 </div>
                 <!-- Day Assignment List -->
-                <div class="cs-day-list" id="csDayList"></div>
+                <ul class="cs-day-list" id="csDayList"></ul>
                 <!-- Save Button -->
                 <button class="btn-primary btn-full" id="saveSessionBtn">Save Session</button>
             </section>
@@ -244,7 +244,7 @@
     <!-- ------- Profile Modal ------- -->
     <div class="modal-overlay" id="profileModal">
         <div class="modal-box">
-            <div class="modal-title">Change Profile Picture</div>
+            <h2 class="modal-title">Change Profile Picture</h2>
             <!-- Avatar Options -->
             <div class="profile-options">
                 <div class="profile-option" data-pic="male">
@@ -270,20 +270,20 @@
     <div class="modal-overlay" id="viewModal">
         <div class="modal-box view-modal-box">
             <!-- Modal Header -->
-            <div class="view-modal-header">
+            <header class="view-modal-header">
                 <img id="viewModalImg" src="" alt="" class="view-modal-img" style="display:none">
                 <div class="view-modal-titles">
-                    <div class="modal-title" id="viewModalName"></div>
-                    <div class="view-modal-muscles" id="viewModalMuscles"></div>
+                    <h2 class="modal-title" id="viewModalName"></h2>
+                    <p class="view-modal-muscles" id="viewModalMuscles"></p>
                 </div>
                 <button class="modal-cancel view-modal-close" id="viewModalClose">&#x2715;</button>
-            </div>
+            </header>
             <!-- Exercise List -->
-            <div class="view-modal-exercises" id="viewModalExercises"></div>
+            <ul class="view-modal-exercises" id="viewModalExercises"></ul>
         </div>
     </div>
     <!-- ------- Toast ------- -->
-    <div class="toast" id="toast"></div>
+    <output class="toast" id="toast" aria-live="polite"></output>
     <!-- ------- Footer ------- -->
     <footer class="site-footer" id="footer">
         <!-- SVG -->
@@ -317,20 +317,20 @@
             </div>
             <div class="footer-rule"></div>
             <!-- Contact -->
-            <div class="footer-contact">
+            <address class="footer-contact">
                 <span>Phone: <a href="tel:+441234567">+44 1234 567</a></span>
                 <span class="sep" aria-hidden="true">|</span>
                 <span>Email: <a href="/cdn-cgi/l/email-protection#2a4d53475a464b44444f586a4d474b434604494547"><span class="__cf_email__" data-cfemail="8becf2e6fbe7eae5e5eef9cbece6eae2e7a5e8e4e6">[email&#160;protected]</span></a></span>
-            </div>
+            </address>
             <div class="footer-rule footer-rule--short"></div>
             <!-- Bottom -->
-            <div class="footer-bottom">
+            <small class="footer-bottom">
                 <span>Copyright &copy; 2025</span>
                 <span class="sep" aria-hidden="true">|</span>
                 <a href="#">Privacy Policy</a>
                 <span class="sep" aria-hidden="true">|</span>
                 <a href="#">Terms &amp; Conditions</a>
-            </div>
+            </small>
         </div>
     </footer>
     <!-- ------- Scripts ------- -->
