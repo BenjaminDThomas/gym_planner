@@ -10,12 +10,14 @@ Navbar Mobile Hamburger Toggle + Smooth Scroll
   const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
+  /* safe on pages without a nav */
+  if (!hamburger || !mobileMenu) return;
+
   /* toggle open / closed */
   hamburger.addEventListener('click', function () {
     const isOpen = mobileMenu.classList.toggle('is-open');
     /* swap icon — hamburger when closed, X when open */
     hamburger.innerHTML = isOpen ? '&#10005;' : '&#9776;';
-    /* update aria-expanded */
     hamburger.setAttribute('aria-expanded', String(isOpen));
     hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
     /* prevent scrolling while menu is open */
@@ -29,8 +31,12 @@ Navbar Mobile Hamburger Toggle + Smooth Scroll
   });
 
   /* disappear when viewport is resized back to desktop */
+  var resizeTimer;
   window.addEventListener('resize', function () {
-    if (window.innerWidth > 768) closeMenu();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      if (window.innerWidth > 768) closeMenu();
+    }, 100);
   });
 
   /* closes menu and resets state */

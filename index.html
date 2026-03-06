@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Planner</title>
+    <meta name="description" content="Plan and track your gym workouts with GymPlanner. Build personalised sessions, schedule your week, and book personal trainers.">
     <!-- CSS Styles File-->
     <link rel="stylesheet" href="css/style.css">
     <!-- CSS Grid File-->
     <link rel="stylesheet" href="css/grid.css">
+    <!-- Preload only the correct hero image per viewport -->
+    <link rel="preload" as="image" href="images/hero_image_mobile.png" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="images/hero_image_container.png" media="(min-width: 769px)" fetchpriority="high">
 </head>
 <body>
     <!-- ------- Header ------- -->
@@ -16,7 +20,7 @@
         <nav class="site-nav" aria-label="Main navigation">
             <!-- Logo -->
             <a href="#home" class="site-nav__logo" aria-label="GymPlanner home">
-                <img class="logo" src="../images/logo.png" alt="GymPlanner logo">
+                <img class="logo" src="images/logo.png" alt="GymPlanner logo" width="95" height="62">
             </a>
             <!-- Nav Links -->
             <ul class="site-nav__links">
@@ -41,10 +45,11 @@
             </ul>
         </nav>
     </header>
-    <!-- ------- Hero ------- -->
     <section class="hero" id="home" aria-label="Hero">
-        <img class="hero__img hero__img--desktop" src="images/hero_image_container.png" alt="GymPlanner workout planning preview">
-        <img class="hero__img hero__img--mobile"  src="images/hero_image_mobile.png"   alt="GymPlanner workout planning preview">
+        <picture>
+            <source srcset="images/hero_image_mobile.png" media="(max-width: 768px)">
+            <img class="hero__img" src="images/hero_image_container.png" alt="GymPlanner workout planning preview" width="1905" height="1092" fetchpriority="high" decoding="async">
+        </picture>
         <div class="hero__content">
             <h1 class="hero__title">Plan smarter. Train harder.</h1>
             <p class="hero__sub">Build and follow personalised workouts,<br>track your progress, and see results.</p>
@@ -55,7 +60,7 @@
     <section class="about" id="about" aria-label="About Us">
         <!-- Row 1: mini bars top left + text right -->
         <div class="about__row about__row--1">
-            <img class="about__deco about__deco--mini-bars" src="images/mini_bars.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="about__deco about__deco--mini-bars" src="images/mini_bars.png" alt="" aria-hidden="true" width="95" height="95" loading="lazy">
             <div class="about__text-block">
                 <p>We created this gym journal to make fitness tracking simple, flexible, and effective.</p>
                 <p>Training isn't always perfect. Plans change, schedules shift, and goals evolve.</p>
@@ -67,7 +72,7 @@
                 That's why our platform is built to let you plan workouts, edit them as needed,
                 and delete what no longer serves you…
             </p>
-            <img class="about__deco about__deco--top-bar" src="images/top_bar.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="about__deco about__deco--top-bar" src="images/top_bar.png" alt="" aria-hidden="true" width="95" height="40" loading="lazy">
         </div>
         <!-- ALL IN ONE PLACE Headline -->
         <div class="about__headline-row">
@@ -116,12 +121,12 @@
     <!-- ------- Footer ------- -->
     <footer class="site-footer" id="footer">
     <!-- SVG -->
-    <img src="images/footer_cross-section_box.svg" alt="" aria-hidden="true" class="footer-cut"/>
+    <img src="images/footer_cross-section_box.svg" alt="" aria-hidden="true" class="footer-cut" loading="lazy"/>
     <!-- Logo -->
     <div class="footer-inner">
         <div class="footer-top">
         <a href="#home" class="site-footer__logo" aria-label="Back to top">
-            <img src="images/logo.png" alt="GymPlanner logo">
+            <img src="images/logo.png" alt="GymPlanner logo" width="95" height="62" loading="lazy">
         </a>
         <!-- Facebook Socials -->
         <div class="footer-social" aria-label="Social media">

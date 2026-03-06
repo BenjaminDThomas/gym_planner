@@ -12,7 +12,7 @@ var MONTHS = ['January','February','March','April','May','June','July','August',
 
 /* 
 ----------------- 
-Storage
+Storage (ai generated)
 ----------------- 
 */
 /* save all state to localStorage */
