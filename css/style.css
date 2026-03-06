@@ -85,7 +85,7 @@ Mobile Menu
 
 /*
 -----------
-Hero
+Hero (ai generated)
 -----------
 */
 .hero { position: relative; width: 100%; height: calc(100vh - var(--nav-h)); margin-top: var(--nav-h); overflow: hidden; }
@@ -221,7 +221,7 @@ Planner Layout
 
 /*
 -----------
-Sidebar
+Sidebar (ai generated)
 -----------
 */
 .sidebar {
@@ -290,7 +290,7 @@ Toast
 
 /*
 -----------
-Modal
+Modal (ai generated)
 -----------
 */
 .modal-overlay {
