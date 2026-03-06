@@ -1,0 +1,42 @@
+-----------------
+FitnessAI: https://www.fitnessai.com/
+-----------------
+
+Key design elements that inspired the project:
+
+Clean and modern layout
+- The website uses a minimal design with plenty of white space, making the interface easy to read and visually appealing.
+
+Efficient progress tracking
+- FitnessAI focuses on tracking sets, reps, and strength progression, which inspired the idea of including progress tracking features in the gym planner.
+
+Simple navigation and user flow
+- The design makes it easy for users to quickly start a workout or view their progress, influencing the idea of creating a clear dashboard for workouts.
+
+Mobile-friendly design
+- The layout adapts well to mobile devices, which inspired the structure for mobile.
+
+-----------------
+Muscle & Strength: https://www.muscleandstrength.com/workout-routines
+-----------------
+
+Key design elements that inspired the project:
+
+Structured workout plans
+Workout routines are organised clearly with sets, reps, and instructions, influencing the structured workout logging system in the planner.
+
+Visual exercise guidance
+Many exercises include images or videos, which inspired the idea of adding exercise demonstrations to help users perform movements correctly.
+
+Content-focused layout
+The site prioritises useful fitness information relative to users, which influenced the decision to make the planner simple and focused on functionality rather than cluttered design.
+
+-----------------
+Summary
+-----------------
+
+Both websites helped influence the design of the gym planner:
+
+- FitnessAI inspired the modern interface, progress tracking, and mobile usability.
+- Muscle & Strength inspired the structured routines, and workout guidance.
+Combining these ideas helped shape a gym planner that is easy to use, visually clean, and useful for tracking workouts and planning training sessions.
