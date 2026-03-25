@@ -1,4 +1,8 @@
-/* ai generated */
+/*
+  AI-assisted code:
+  This file was created with help from Claude AI and then reviewed
+  and modified to fit the functionality and structure of this project.
+*/
 (function () {
   'use strict';
   

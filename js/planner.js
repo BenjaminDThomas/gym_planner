@@ -1,4 +1,10 @@
-/* ai generated */
+/*
+  AI-assisted code:
+  This planner script was drafted with assistance from Claude AI.
+  The generated JavaScript was then reviewed, edited, and integrated
+  into this project for workout creation, session planning, storage,
+  dashboard updates, and modal interactions.
+*/
 /* 
 ----------------- 
 State 
@@ -12,7 +18,9 @@ var MONTHS = ['January','February','March','April','May','June','July','August',
 
 /* 
 ----------------- 
-Storage (ai generated)
+Storage (AI-assisted with Claude AI)
+This localStorage logic was drafted with assistance from Claude AI
+and then reviewed and adapted for this project.
 ----------------- 
 */
 /* save all state to localStorage */

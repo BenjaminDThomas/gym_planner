@@ -13,9 +13,9 @@
     <!-- ------- Header ------- -->
     <header>
         <!-- ------- Navbar ------- -->
-        <nav class="site-nav" aria-label="Main navigation">
+        <nav class="site-nav">
             <!-- Logo -->
-            <a href="index.html" class="site-nav__logo" aria-label="GymPlanner home">
+            <a href="index.html" class="site-nav__logo">
                 <img class="logo" src="images/logo.png" alt="GymPlanner logo">
             </a>
             <!-- Nav Links -->
@@ -32,7 +32,7 @@
             </div>
         </nav>
         <!-- Mobile Menu -->
-        <nav id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <nav id="mobileMenu" class="mobile-menu">
             <ul class="mobile-menu__list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#about">About Us</a></li>
@@ -49,7 +49,7 @@
                 <h1>Book Personal Trainer</h1>
                 <p>Get expert guidance to reach your fitness goals.<br>Select a trainer and time for your session.</p>
                 <span class="bookings-drag-hint">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M8 7h8M8 12h8M8 17h4"/>
                         <path d="M3 7l2-2 2 2M3 17l2 2 2-2"/>
                     </svg>
@@ -57,12 +57,12 @@
                 </span>
             </header>
             <!-- Trainer Carousel -->
-            <section class="bookings-section" aria-label="Select trainer">
+            <section class="bookings-section">
                 <div class="trainer-carousel-outer">
                     <div class="trainer-carousel-wrap" id="trainerCarousel">
                         <div class="trainer-carousel-track" id="trainerTrack">
                             <!-- Trainer 1: Jonathon Jones -->
-                            <article class="trainer-card" data-trainer="0" role="button" tabindex="0" aria-label="Select Jonathon Jones">
+                            <article class="trainer-card" data-trainer="0" tabindex="0" aria-label="Select Jonathon Jones">
                                 <!-- Trainer Selected -->
                                 <span class="trainer-selected-label">SELECTED</span>
                                 <header class="trainer-card-header">
@@ -91,7 +91,7 @@
                                 </div>
                             </article>
                             <!-- Trainer 2: Sarah Chambers -->
-                            <article class="trainer-card" data-trainer="1" role="button" tabindex="0" aria-label="Select Sarah Chambers">
+                            <article class="trainer-card" data-trainer="1" tabindex="0" aria-label="Select Sarah Chambers">
                                 <span class="trainer-selected-label">SELECTED</span>
                                 <header class="trainer-card-header">
                                     <div class="trainer-card-header-left">
@@ -120,24 +120,24 @@
                         </div>
                     </div>
                     <!-- Carousel Dots -->
-                    <div class="trainer-dots" id="trainerDots" aria-label="Trainer carousel navigation">
+                    <div class="trainer-dots" id="trainerDots">
                         <button class="trainer-dot active" data-index="0" aria-label="Trainer 1"></button>
                         <button class="trainer-dot" data-index="1" aria-label="Trainer 2"></button>
                     </div>
                 </div>
             </section>
             <!-- Select Date -->
-            <section class="bookings-section" aria-label="Select date">
+            <section class="bookings-section">
                 <h2 class="bookings-section-title">Select Date</h2>
                 <div class="date-nav">
                     <button class="date-scroll-btn" id="datePrev" aria-label="Previous week" disabled>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M15 18l-6-6 6-6"/>
                         </svg>
                     </button>
                     <div class="date-grid" id="dateGrid"></div>
                     <button class="date-scroll-btn" id="dateNext" aria-label="Next week">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M9 18l6-6-6-6"/>
                         </svg>
                     </button>
@@ -145,7 +145,7 @@
                 <p class="date-limit-note">Bookings available up to 4 weeks in advance</p>
             </section>
             <!-- Select Time -->
-            <section class="bookings-section" aria-label="Select time">
+            <section class="bookings-section">
                 <h2 class="bookings-section-title">Select Time</h2>
                 <div class="time-grid" id="timeGrid">
                     <button class="time-chip" data-time="9:00 am">9:00 am <span class="time-chip-arrow">›</span></button>
@@ -157,7 +157,7 @@
                 </div>
             </section>
             <!-- Enter Email -->
-            <section class="bookings-section" aria-label="Enter email">
+            <section class="bookings-section">
                 <h2 class="bookings-section-title">Enter Email</h2>
                 <div class="email-input-wrap">
                     <input type="email" class="email-input" id="emailInput" placeholder="Enter email address here..." autocomplete="email"/>
@@ -171,8 +171,8 @@
         </article>
     </main>
     <!-- Success Modal -->
-    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="modal-box">
+    <div class="modal-overlay" id="modalOverlay" hidden>
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
             <div class="modal-tick" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
@@ -188,11 +188,11 @@
     <!-- Logo -->
     <div class="footer-inner">
         <div class="footer-top">
-        <a href="#home" class="site-footer__logo" aria-label="Back to top">
+        <a href="#home" class="site-footer__logo">
             <img src="images/logo.png" alt="GymPlanner logo">
         </a>
         <!-- Facebook Socials -->
-        <div class="footer-social" aria-label="Social media">
+        <div class="footer-social">
             <a class="social-link" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>

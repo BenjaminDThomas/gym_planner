@@ -17,9 +17,9 @@
     <!-- ------- Header ------- -->
     <header>
         <!-- ------- Navbar ------- -->
-        <nav class="site-nav" aria-label="Main navigation">
+        <nav class="site-nav">
             <!-- Logo -->
-            <a href="#home" class="site-nav__logo" aria-label="GymPlanner home">
+            <a href="#home" class="site-nav__logo">
                 <img class="logo" src="images/logo.png" alt="GymPlanner logo" width="95" height="62">
             </a>
             <!-- Nav Links -->
@@ -36,7 +36,7 @@
             </div>
         </nav>
         <!-- Mobile Menu -->
-        <nav id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <nav id="mobileMenu" class="mobile-menu">
             <ul class="mobile-menu__list">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Us</a></li>
@@ -45,7 +45,7 @@
             </ul>
         </nav>
     </header>
-    <section class="hero" id="home" aria-label="Hero">
+    <section class="hero" id="home">
         <picture>
             <source srcset="images/hero_image_mobile.png" media="(max-width: 768px)">
             <img class="hero__img" src="images/hero_image_container.png" alt="GymPlanner workout planning preview" width="1905" height="1092" fetchpriority="high" decoding="async">
@@ -57,7 +57,7 @@
         </div>
     </section>
     <!-- ------- About Us ------- -->
-    <section class="about" id="about" aria-label="About Us">
+    <section class="about" id="about">
         <!-- Row 1: mini bars top left + text right -->
         <article class="about__row about__row--1">
             <img class="about__deco about__deco--mini-bars" src="images/mini_bars.png" alt="" aria-hidden="true" width="95" height="95" loading="lazy">
@@ -81,7 +81,7 @@
         <!-- Row 3: lifting animation left + text right -->
         <article class="about__row about__row--3">
         <figure class="about__lifter-wrap">
-            <svg class="about__lifter-svg" viewBox="0 -25 130 179" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Animated figure lifting a barbell" role="img">
+            <svg class="about__lifter-svg" viewBox="0 -25 130 179" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Animated figure lifting a barbell">
                 <!-- Static: legs -->
                 <path d="M39 113H61V144C61 149.523 56.5228 154 51 154H49C43.4772 154 39 149.523 39 144V113Z" fill="#333333"/>
                 <path d="M69 113H91V144C91 149.523 86.5228 154 81 154H79C73.4772 154 69 149.523 69 144V113Z" fill="#333333"/>
@@ -125,11 +125,11 @@
     <!-- Logo -->
     <div class="footer-inner">
         <div class="footer-top">
-        <a href="#home" class="site-footer__logo" aria-label="Back to top">
+        <a href="#home" class="site-footer__logo">
             <img src="images/logo.png" alt="GymPlanner logo" width="95" height="62" loading="lazy">
         </a>
         <!-- Facebook Socials -->
-        <div class="footer-social" aria-label="Social media">
+        <div class="footer-social">
             <a class="social-link" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>

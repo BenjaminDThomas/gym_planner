@@ -13,9 +13,9 @@
     <!-- ------- Header ------- -->
     <header>
         <!-- ------- Navbar ------- -->
-        <nav class="site-nav" aria-label="Main navigation">
+        <nav class="site-nav">
             <!-- Logo -->
-            <a href="index.html" class="site-nav__logo" aria-label="GymPlanner home">
+            <a href="index.html" class="site-nav__logo">
                 <img class="logo" src="images/logo.png" alt="GymPlanner logo">
             </a>
             <!-- Nav Links -->
@@ -32,7 +32,7 @@
             </div>
         </nav>
         <!-- ------- Mobile Menu ------- -->
-        <nav id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <nav id="mobileMenu" class="mobile-menu">
             <ul class="mobile-menu__list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#about">About Us</a></li>
@@ -55,7 +55,7 @@
                 <img src="images/profile_picture_male.png" alt="Profile" id="profileImg"
                      onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'62\' height=\'62\' viewBox=\'0 0 62 62\'><circle cx=\'31\' cy=\'31\' r=\'31\' fill=\'%23ede6e3\'/><circle cx=\'31\' cy=\'24\' r=\'10\' fill=\'%23988483\'/><ellipse cx=\'31\' cy=\'50\' rx=\'18\' ry=\'12\' fill=\'%23988483\'/></svg>'">
                 <div class="sidebar-profile-edit">
-                    <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                 </div>
             </figure>
             <!-- Sidebar Nav -->
@@ -67,7 +67,7 @@
         </aside>
         <!-- ------- Mobile Sidebar Toggle ------- -->
         <button class="sidebar-toggle-tab" id="sidebarToggle" aria-label="Toggle sidebar">
-            <svg class="sidebar-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="sidebar-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="9 18 15 12 9 6"/>
             </svg>
         </button>
@@ -87,7 +87,7 @@
                     <h3>This Week</h3>
                     <p class="completion" id="dashCompletion">0 <span>/ 0 Completed</span></p>
                     <div class="session-checklist" id="dashChecklist">
-                        <p class="checklist-item" style="color:var(--text-muted);font-size:0.82rem;font-style:italic;">
+                        <p class="checklist-item checklist-item--empty">
                             No sessions scheduled — create one in My Sessions
                         </p>
                     </div>
@@ -114,7 +114,11 @@
                     </article>
                 </div>
             </section>
-            <!-- ai generated-->
+            <!--
+                AI-assisted section:
+                The structure and markup for the "My Workouts" area below were drafted with help from Claude AI,
+                then reviewed and edited for integration, styling, and accessibility within this project.
+            -->
             <!-- ------- My Workouts ------- -->
             <section class="page" id="page-my-workouts">
                 <header class="page-header">
@@ -143,14 +147,14 @@
                     </div>
                     <!-- Image Upload -->
                     <div class="file-upload-area" id="cwUploadArea">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <polyline points="16 16 12 12 8 16"/>
                             <line x1="12" y1="12" x2="12" y2="21"/>
                             <path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/>
                         </svg>
                         <p>Browse Files</p>
                         <small>Drag and drop files here</small>
-                        <input type="file" id="cwFileInput" accept="image/*" style="display:none">
+                        <input type="file" id="cwFileInput" accept="image/*" class="is-hidden">
                     </div>
                     <!-- Image Preview -->
                     <img id="cwPreviewImg" src="" alt="" class="cw-preview-img">
@@ -179,11 +183,11 @@
                         <!-- Week Navigation -->
                         <div class="week-nav">
                             <button class="week-nav-btn" id="sessionsPrev">
-                                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
                             </button>
                             <span class="week-label" id="sessionsWeekLabel">This Week</span>
                             <button class="week-nav-btn" id="sessionsNext">
-                                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
                             </button>
                         </div>
                         <!-- Day List -->
@@ -191,10 +195,10 @@
                         <!-- Session Actions -->
                         <div class="sessions-bottom-actions">
                             <button class="session-action-icon" id="deleteSessionBtn" title="Delete session">
-                                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
                             </button>
                             <button class="session-action-icon" id="editSessionBtn" title="Edit session">
-                                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                             </button>
                         </div>
                     </div>
@@ -210,11 +214,11 @@
                     <p class="cs-week-label">Select a Week:</p>
                     <div class="cs-week-row">
                         <button class="week-nav-btn" id="csMonthPrev">
-                            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
                         </button>
                         <span class="cs-week-name" id="csMonthLabel">February 2026</span>
                         <button class="week-nav-btn" id="csMonthNext">
-                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
                         </button>
                     </div>
                     <!-- Recurring Toggle -->
@@ -227,7 +231,7 @@
                 </div>
                 <!-- Workout Pool Hint -->
                 <p class="workout-pool-hint">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 16 3 12 7 8"/><polyline points="17 8 21 12 17 16"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="7 16 3 12 7 8"/><polyline points="17 8 21 12 17 16"/></svg>
                     Drag a workout onto a day below, or click it to auto-assign — only workouts added via <strong>+ Add</strong> appear here
                 </p>
                 <!-- Workout Pool -->
@@ -242,41 +246,41 @@
         </main>
     </div>
     <!-- ------- Profile Modal ------- -->
-    <div class="modal-overlay" id="profileModal">
-        <div class="modal-box">
-            <h2 class="modal-title">Change Profile Picture</h2>
+    <div class="modal-overlay" id="profileModal" hidden>
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+            <h2 class="modal-title" id="profileModalTitle">Change Profile Picture</h2>
             <!-- Avatar Options -->
             <div class="profile-options">
                 <div class="profile-option" data-pic="male">
-                    <img src="images/profile_picture_male.png" alt="Male" onerror="this.style.display='none'">
+                    <img src="images/profile_picture_male.png" alt="Male Avatar" onerror="this.hidden=true">
                     <span>Male Avatar</span>
                 </div>
                 <div class="profile-option" data-pic="female">
-                    <img src="images/profile_picture_female.png" alt="Female" onerror="this.style.display='none'">
+                    <img src="images/profile_picture_female.png" alt="Female Avatar" onerror="this.hidden=true">
                     <span>Female Avatar</span>
                 </div>
                 <div class="profile-option" data-pic="upload" id="uploadProfileOption">
                     <div class="upload-icon">
-                        <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>
                     </div>
                     <span>Upload Custom Image</span>
-                    <input type="file" id="profileFileInput" accept="image/*" style="display:none;">
+                    <input type="file" id="profileFileInput" accept="image/*" class="is-hidden">
                 </div>
             </div>
             <button class="modal-cancel" id="profileModalCancel">Cancel</button>
         </div>
     </div>
     <!-- ------- View Workout Modal ------- -->
-    <div class="modal-overlay" id="viewModal">
-        <div class="modal-box view-modal-box">
+    <div class="modal-overlay" id="viewModal" hidden>
+        <div class="modal-box view-modal-box" role="dialog" aria-modal="true" aria-labelledby="viewModalName">
             <!-- Modal Header -->
             <header class="view-modal-header">
-                <img id="viewModalImg" src="" alt="" class="view-modal-img" style="display:none">
+                <img id="viewModalImg" src="" alt="" class="view-modal-img is-hidden">
                 <div class="view-modal-titles">
                     <h2 class="modal-title" id="viewModalName"></h2>
                     <p class="view-modal-muscles" id="viewModalMuscles"></p>
                 </div>
-                <button class="modal-cancel view-modal-close" id="viewModalClose">&#x2715;</button>
+                <button class="modal-cancel view-modal-close" id="viewModalClose" aria-label="Close workout details">&#x2715;</button>
             </header>
             <!-- Exercise List -->
             <ul class="view-modal-exercises" id="viewModalExercises"></ul>
@@ -291,11 +295,11 @@
         <!-- Logo -->
         <div class="footer-inner">
             <div class="footer-top">
-                <a href="index.html" class="site-footer__logo" aria-label="Back to top">
+                <a href="index.html" class="site-footer__logo">
                     <img src="images/logo.png" alt="GymPlanner logo">
                 </a>
                 <!-- Social Links -->
-                <div class="footer-social" aria-label="Social media">
+                <div class="footer-social">
                     <a class="social-link" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
